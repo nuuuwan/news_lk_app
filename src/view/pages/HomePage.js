@@ -1,10 +1,11 @@
-import * as React from "react";
 import { Component } from "react";
+import * as React from "react";
 
-import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import ArticleSummary from "../../nonview/core/ArticleSummary";
+
 import ArticleView from "../../view/organisms/ArticleView";
 
 const STYLE = {

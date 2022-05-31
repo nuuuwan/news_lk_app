@@ -31,6 +31,7 @@ export default class App extends Component {
     return (
       <ThemeProvider theme={THEME}>
         <HomePage />
+        <div>Sri Lanka News</div>
       </ThemeProvider>
     );
   }

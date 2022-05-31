@@ -1,5 +1,5 @@
-import WWWFuture from "../../nonview/base/WWWFuture";
 import CacheFuture from "../../nonview/base/CacheFuture";
+import WWWFuture from "../../nonview/base/WWWFuture";
 import { URL_DATA } from "../../nonview/constants/Data";
 
 const URL_ARTICLES = URL_DATA + "/articles";
