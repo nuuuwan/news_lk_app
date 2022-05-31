@@ -10,7 +10,7 @@ export default function ArticleViewMolecule({ article }) {
   const colorNewspaper = theme.palette.success.main;
 
   return (
-    <Box sx={{marginBottom: 3}}>
+    <Box sx={{ marginBottom: 3 }}>
       <Link href={article.url} target="_blank" sx={{ textDecoration: "none" }}>
         <Typography
           variant="caption"

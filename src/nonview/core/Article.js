@@ -34,7 +34,7 @@ export default class Article {
   }
 
   get urlShort() {
-    return this.url.split('/').splice(0, 3).join('/');
+    return this.url.split("/").splice(0, 3).join("/");
   }
 
   static fromDict(d) {

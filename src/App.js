@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
+import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Box from '@mui/material/Box';
-import SriLankaColors from "./view/_constants/SriLankaColors";
-import HomePage from "./view/pages/HomePage.js";
 
+import SriLankaColors from "./view/_constants/SriLankaColors";
 import VersionWidget from "./view/molecules/VersionWidget";
+import HomePage from "./view/pages/HomePage.js";
 
 const THEME = createTheme({
   palette: {
@@ -32,7 +32,7 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={THEME}>
-        <Box sx={{maxWidth: "90%", width: 700, margin: "auto"}}>
+        <Box sx={{ maxWidth: "90%", width: 700, margin: "auto" }}>
           <HomePage />
           <VersionWidget />
         </Box>
