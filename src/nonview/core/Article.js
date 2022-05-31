@@ -1,6 +1,7 @@
 import CacheFuture from "../../nonview/base/CacheFuture";
 import WWWFuture from "../../nonview/base/WWWFuture";
 import { URL_DATA } from "../../nonview/constants/Data";
+import TimeXFuture from "../../nonview/base/TimeXFuture"
 
 const URL_ARTICLES = URL_DATA + "/articles";
 const MAX_WORDS_BODY_LINES_LIMITED = 100;
@@ -15,7 +16,7 @@ export default class Article {
   }
 
   get timeStr() {
-    return new Date(this.timeUT * 1000.0).toLocaleString("si-LK");
+    return TimeXFuture.humanizeUT(this.timeUT);
   }
 
   get bodyLinesLimited() {
