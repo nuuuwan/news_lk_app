@@ -1,5 +1,5 @@
-import { Component } from "react";
 import * as React from "react";
+import { Component } from "react";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -13,6 +13,8 @@ const STYLE = {
   marginTop: 10,
   marginBottom: 10,
 };
+
+const MAX_ARTICLES_TO_DISPLAY = 10;
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -31,9 +33,14 @@ export default class HomePage extends Component {
     if (!articleSummaryList) {
       return <CircularProgress />;
     }
+
+    const articleSummaryListToDisplay = articleSummaryList.splice(
+      0,
+      MAX_ARTICLES_TO_DISPLAY
+    );
     return (
       <Box sx={STYLE}>
-        {articleSummaryList.map(function (articleSummary) {
+        {articleSummaryListToDisplay.map(function (articleSummary) {
           const fileName = articleSummary.fileName;
           return (
             <ArticleView key={"article-" + fileName} fileName={fileName} />
