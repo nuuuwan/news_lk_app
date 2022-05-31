@@ -10,7 +10,7 @@ export default function ArticleViewMolecule({ article }) {
   const colorNewspaper = theme.palette.success.main;
 
   return (
-    <Box sx={{ marginBottom: 3 }}>
+    <Box>
       <Link href={article.url} target="_blank" sx={{ textDecoration: "none" }}>
         <Typography
           variant="caption"
@@ -23,7 +23,7 @@ export default function ArticleViewMolecule({ article }) {
       <Typography variant="caption" component="div" sx={{ color: colorDate }}>
         {article.timeStr}
       </Typography>
-      <Typography variant="h5" sx={{ color: colorTitle }}>
+      <Typography variant="h6" sx={{ color: colorTitle }}>
         {article.title}
       </Typography>
       {article.bodyLinesLimited.map(function (line, iLine) {
