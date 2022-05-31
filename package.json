@@ -1,6 +1,7 @@
 {
   "name": "news_lk2_app",
   "version": "0.1.0",
+  "homepage": "https://nuuuwan.github.io/news_lk2_app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
