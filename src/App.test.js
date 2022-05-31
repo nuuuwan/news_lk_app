@@ -4,6 +4,6 @@ import App from "./App";
 
 test("renders learn react link", async () => {
   render(<App />);
-  const linkElement = await screen.findByText("Sri Lanka News");
+  const linkElement = await screen.findByText("Sri Lanka News by @nuuuwan");
   expect(linkElement).toBeInTheDocument();
 });
