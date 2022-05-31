@@ -1,7 +1,7 @@
 import CacheFuture from "../../nonview/base/CacheFuture";
+import TimeXFuture from "../../nonview/base/TimeXFuture";
 import WWWFuture from "../../nonview/base/WWWFuture";
 import { URL_DATA } from "../../nonview/constants/Data";
-import TimeXFuture from "../../nonview/base/TimeXFuture"
 
 const URL_ARTICLES = URL_DATA + "/articles";
 const MAX_WORDS_BODY_LINES_LIMITED = 100;

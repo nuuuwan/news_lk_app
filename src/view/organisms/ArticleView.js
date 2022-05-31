@@ -1,7 +1,8 @@
 import { Component } from "react";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 import Article from "../../nonview/core/Article";
-import CircularProgress from '@mui/material/CircularProgress';
 
 import ArticleViewMolecule from "../../view/molecules/ArticleViewMolecule";
 
