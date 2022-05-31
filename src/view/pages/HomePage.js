@@ -3,9 +3,6 @@ import * as React from "react";
 // import ReactGA from "react-ga";
 
 import Box from "@mui/material/Box";
-import CustomBottomNavigation from "../../nonstate/molecules/CustomBottomNavigation.js";
-import VersionWidget from "../../nonstate/atoms/VersionWidget.js";
-import CustomAppBar from "../../nonstate/molecules/CustomAppBar.js";
 
 const STYLE = {
   margin: 4,
@@ -26,11 +23,6 @@ export default class HomePage extends Component {
   render() {
     return (
       <Box sx={STYLE}>
-        <CustomAppBar />
-
-        <VersionWidget />
-
-        <CustomBottomNavigation onClickBack={this.onClickBack.bind(this)} />
       </Box>
     );
   }
