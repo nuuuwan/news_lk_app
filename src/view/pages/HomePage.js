@@ -6,6 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
+import RefreshButton from "../../view/atoms/RefreshButton";
 import ArticleView from "../../view/organisms/ArticleView";
 
 const STYLE = {
@@ -40,6 +41,7 @@ export default class HomePage extends Component {
     );
     return (
       <Box sx={STYLE}>
+        <RefreshButton />
         {articleSummaryListToDisplay.map(function (articleSummary) {
           const fileName = articleSummary.fileName;
           return (
