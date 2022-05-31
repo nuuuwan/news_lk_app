@@ -1,8 +1,9 @@
-import { Component } from "react";
 import * as React from "react";
+import { Component } from "react";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+import Stack from "@mui/material/Stack";
 
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
@@ -15,7 +16,7 @@ const STYLE = {
   marginBottom: 10,
 };
 
-const MAX_ARTICLES_TO_DISPLAY = 10;
+const MAX_ARTICLES_TO_DISPLAY = 30;
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -42,12 +43,14 @@ export default class HomePage extends Component {
     return (
       <Box sx={STYLE}>
         <RefreshButton />
-        {articleSummaryListToDisplay.map(function (articleSummary) {
-          const fileName = articleSummary.fileName;
-          return (
-            <ArticleView key={"article-" + fileName} fileName={fileName} />
-          );
-        })}
+        <Stack spacing={2}>
+          {articleSummaryListToDisplay.map(function (articleSummary) {
+            const fileName = articleSummary.fileName;
+            return (
+              <ArticleView key={"article-" + fileName} fileName={fileName} />
+            );
+          })}
+        </Stack>
       </Box>
     );
   }
