@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import Box from '@mui/material/Box';
 import SriLankaColors from "./view/_constants/SriLankaColors";
 import HomePage from "./view/pages/HomePage.js";
+
+import VersionWidget from "./view/molecules/VersionWidget";
 
 const THEME = createTheme({
   palette: {
@@ -30,8 +32,10 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={THEME}>
-        <HomePage />
-        <div>Sri Lanka News</div>
+        <Box sx={{maxWidth: "90%", width: 700, margin: "auto"}}>
+          <HomePage />
+          <VersionWidget />
+        </Box>
       </ThemeProvider>
     );
   }
