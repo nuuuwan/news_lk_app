@@ -1,18 +1,35 @@
 import React, { Component } from "react";
-import HomePage from "./view/pages/HomePage.js";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import SriLankaColors from "./view/_constants/SriLankaColors";
+import HomePage from "./view/pages/HomePage.js";
+
+const THEME = createTheme({
+  palette: {
+    primary: {
+      main: SriLankaColors.Sinhala,
+    },
+    secondary: {
+      main: SriLankaColors.Tamil,
+    },
+    success: {
+      main: SriLankaColors.Muslim,
+    },
+    info: {
+      main: SriLankaColors.Buddhist,
+    },
+  },
+  typography: {
+    fontFamily: ["Nunito Sans", "sans-serif"].join(","),
+    fontSize: 15,
+  },
+});
 
 export default class App extends Component {
   render() {
-    const theme = createTheme({
-      typography: {
-        fontFamily: ["PT Sans", "sans-serif"].join(","),
-        fontSize: 14,
-      },
-    });
-
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={THEME}>
         <HomePage />
       </ThemeProvider>
     );
