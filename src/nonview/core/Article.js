@@ -15,7 +15,7 @@ export default class Article {
   }
 
   get timeStr() {
-    return new Date(this.timeUT * 1000.0).toLocaleString();
+    return new Date(this.timeUT * 1000.0).toLocaleString("si-LK");
   }
 
   get bodyLinesLimited() {
@@ -31,6 +31,10 @@ export default class Article {
       }
     }
     return bodyLinesLimited;
+  }
+
+  get urlShort() {
+    return this.url.split('/').splice(0, 3).join('/');
   }
 
   static fromDict(d) {
