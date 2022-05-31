@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import CircularProgress from "@mui/material/CircularProgress";
+import Skeleton from "@mui/material/Skeleton";
 
 import Article from "../../nonview/core/Article";
 
@@ -21,7 +21,7 @@ export default class ArticleView extends Component {
   render() {
     const { article } = this.state;
     if (!article) {
-      return <CircularProgress />;
+      return <Skeleton variant="rectangular" width={"100%"} height={"70vh"} />;
     }
     return <ArticleViewMolecule article={article} />;
   }
