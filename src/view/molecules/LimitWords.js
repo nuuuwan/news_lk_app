@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 
@@ -38,14 +39,18 @@ export default function LimitWords({ lines, wordLimit }) {
       <Condition condition={show}>
         <MultiLines lines={optionalLines} />
       </Condition>
+
       <Condition condition={!show}>
-        <IconButton onClick={onClickShowMore}>
+        <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
           <UnfoldMoreIcon />
+          <Typography variant="caption">Show more</Typography>
         </IconButton>
       </Condition>
+
       <Condition condition={show}>
-        <IconButton onClick={onClickShowLess}>
+        <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
           <UnfoldLessIcon />
+          <Typography variant="caption">Show less</Typography>
         </IconButton>
       </Condition>
     </Box>
