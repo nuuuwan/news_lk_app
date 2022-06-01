@@ -44,7 +44,7 @@ export default function LimitWords({ lines, wordLimit }) {
       </Condition>
 
       <Condition condition={show && mandatoryLines.length > 0}>
-        <MultiLines lines={optionalLines} color="gray"/>
+        <MultiLines lines={optionalLines} color="gray" />
         <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
           <ExpandLessIcon />
           <Typography variant="caption">Read less</Typography>
