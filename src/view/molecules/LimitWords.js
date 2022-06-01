@@ -14,12 +14,12 @@ export default function LimitWords({ lines, wordLimit }) {
   let wordCount = 0;
   for (let line of lines) {
     const words = line.split(" ");
-    wordCount += words.length;
     if (wordCount < wordLimit) {
       mandatoryLines.push(line);
     } else {
       optionalLines.push(line);
     }
+    wordCount += words.length;    
   }
 
   const [show, setShow] = useState(false);
