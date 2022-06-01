@@ -1,7 +1,5 @@
 import { Component } from "react";
 
-import CircularProgress from "@mui/material/CircularProgress";
-
 import Article from "../../nonview/core/Article";
 
 import ArticleViewMolecule from "../../view/molecules/ArticleViewMolecule";
@@ -13,17 +11,18 @@ export default class ArticleView extends Component {
   }
 
   async componentDidMount() {
-    const article = await Article.loadArticle(this.props.fileName);
+    const { articleSummary } = this.props;
+    const article = await Article.loadArticle(articleSummary.fileName);
     this.setState({
       article,
     });
   }
 
   render() {
+    const { articleSummary } = this.props;
     const { article } = this.state;
-    if (!article) {
-      return <CircularProgress />;
-    }
-    return <ArticleViewMolecule article={article} />;
+    return (
+      <ArticleViewMolecule articleSummary={articleSummary} article={article} />
+    );
   }
 }
