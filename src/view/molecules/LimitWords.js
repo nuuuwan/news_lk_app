@@ -40,17 +40,17 @@ export default function LimitWords({ lines, wordLimit }) {
         <MultiLines lines={optionalLines} />
       </Condition>
 
-      <Condition condition={!show}>
+      <Condition condition={!show && optionalLines.length > 0}>
         <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
           <UnfoldMoreIcon />
-          <Typography variant="caption">Show more</Typography>
+          <Typography variant="caption">Read more</Typography>
         </IconButton>
       </Condition>
 
-      <Condition condition={show}>
+      <Condition condition={show && mandatoryLines.length > 0}>
         <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
           <UnfoldLessIcon />
-          <Typography variant="caption">Show less</Typography>
+          <Typography variant="caption">Read less</Typography>
         </IconButton>
       </Condition>
     </Box>
