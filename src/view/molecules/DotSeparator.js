@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 
-const DEFAULT_SEPARATOR = "·";
+const DEFAULT_SEPARATOR = " · ";
 
 export default function DotSeparator({ children, separator, sx }) {
   separator = separator ? separator : DEFAULT_SEPARATOR;
@@ -15,8 +15,10 @@ export default function DotSeparator({ children, separator, sx }) {
   }
 
   return (
-    <Stack direction="row" spacing={0.25} alignItems="center" sx={sx}>
-      {displayChildren}
+    <Stack direction="row" spacing={0.5} alignItems="center" sx={sx}>
+      {displayChildren.map(function (child, iChild) {
+        return <span key={"child-" + iChild}>{child}</span>;
+      })}
     </Stack>
   );
 }
