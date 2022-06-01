@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
+import LimitWords from "../../view/molecules/LimitWords";
 
 export default function ArticleViewMolecule({ article }) {
   const theme = useTheme();
@@ -26,17 +27,7 @@ export default function ArticleViewMolecule({ article }) {
       <Typography variant="h6" sx={{ color: colorTitle }}>
         {article.title}
       </Typography>
-      {article.bodyLinesLimited.map(function (line, iLine) {
-        return (
-          <Typography
-            key={"body-line-" + iLine}
-            variant="body1"
-            sx={{ marginBottom: 2, marginTop: 1 }}
-          >
-            {line}
-          </Typography>
-        );
-      })}
+      <LimitWords lines={article.bodyLines} wordLimit={100} />
     </Box>
   );
 }
