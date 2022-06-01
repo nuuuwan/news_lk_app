@@ -27,6 +27,6 @@ export default class TimeXFuture {
   }
 
   static localeString(ut) {
-    return new Date(ut * 1000.0).toLocaleString("si-LK");
+    return new Date(ut * 1000.0).toLocaleString("en-GB");
   }
 }
