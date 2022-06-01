@@ -13,9 +13,9 @@ import RefreshButton from "../../view/atoms/RefreshButton";
 import ArticleView from "../../view/organisms/ArticleView";
 
 const STYLE = {
-  margin: 4,
-  marginTop: 10,
-  marginBottom: 10,
+  margin: 2,
+  marginTop: 2,
+  marginBottom: 2,
 };
 
 const MAX_ARTICLES_TO_DISPLAY = 100;
@@ -26,25 +26,25 @@ export default class HomePage extends Component {
     this.state = { articleSummaryList: null };
   }
 
-  async reloadData() {
+  async refreshData() {
     const articleSummaryList = await ArticleSummary.loadArticleSummaryList();
-    const timeLatestReload = TimeX.getUnixTime();
+    const timeLatestRefresh = TimeX.getUnixTime();
     this.setState({
       articleSummaryList,
-      timeLatestReload,
+      timeLatestRefresh,
     });
   }
 
   async componentDidMount() {
-    await this.reloadData();
+    await this.refreshData();
   }
 
   async onClickRefresh() {
-    await this.reloadData();
+    await this.refreshData();
   }
 
   render() {
-    const { articleSummaryList, timeLatestReload } = this.state;
+    const { articleSummaryList, timeLatestRefresh } = this.state;
     if (!articleSummaryList) {
       return <CircularProgress />;
     }
@@ -55,8 +55,11 @@ export default class HomePage extends Component {
     );
     return (
       <Box sx={STYLE}>
-        <RefreshButton onClick={this.onClickRefresh.bind(this)} />
-        <Stack key={"articles-" + timeLatestReload} spacing={2}>
+        <RefreshButton
+          onClick={this.onClickRefresh.bind(this)}
+          timeLatestRefresh={timeLatestRefresh}
+        />
+        <Stack key={"articles-" + timeLatestRefresh} spacing={2}>
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
             return (
