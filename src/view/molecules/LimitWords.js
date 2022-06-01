@@ -3,8 +3,8 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
-import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import Condition from "../../view/atoms/Condition";
 import MultiLines from "../../view/molecules/MultiLines";
@@ -36,20 +36,17 @@ export default function LimitWords({ lines, wordLimit }) {
   return (
     <Box>
       <MultiLines lines={mandatoryLines} />
-      <Condition condition={show}>
-        <MultiLines lines={optionalLines} />
-      </Condition>
-
       <Condition condition={!show && optionalLines.length > 0}>
         <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
-          <UnfoldMoreIcon />
+          <ExpandMoreIcon />
           <Typography variant="caption">Read more</Typography>
         </IconButton>
       </Condition>
 
       <Condition condition={show && mandatoryLines.length > 0}>
+        <MultiLines lines={optionalLines} />
         <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
-          <UnfoldLessIcon />
+          <ExpandLessIcon />
           <Typography variant="caption">Read less</Typography>
         </IconButton>
       </Condition>
