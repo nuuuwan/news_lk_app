@@ -1,27 +1,16 @@
 import CacheFuture from "../../nonview/base/CacheFuture";
-import TimeXFuture from "../../nonview/base/TimeXFuture";
 import WWWFuture from "../../nonview/base/WWWFuture";
 import { URL_DATA } from "../../nonview/constants/Data";
+import ArticleSummary from "../../nonview/core/ArticleSummary";
 
 const URL_ARTICLES = URL_DATA + "/articles";
 const MAX_WORDS_BODY_LINES_LIMITED = 100;
 const READING_SPEED_WPM = 200;
 
-export default class Article {
+export default class Article extends ArticleSummary {
   constructor(newspaperID, url, timeUT, title, bodyLines) {
-    this.newspaperID = newspaperID;
-    this.url = url;
-    this.timeUT = timeUT;
-    this.title = title;
+    super(newspaperID, url, timeUT, title, null);
     this.bodyLines = bodyLines;
-  }
-
-  get timeStrHumanized() {
-    return TimeXFuture.humanizeUT(this.timeUT);
-  }
-
-  get timeStr() {
-    return TimeXFuture.localeString(this.timeUT);
   }
 
   get bodyLinesLimited() {
@@ -37,10 +26,6 @@ export default class Article {
       }
     }
     return bodyLinesLimited;
-  }
-
-  get urlShort() {
-    return this.url.split("/").splice(0, 3).join("/");
   }
 
   get body() {

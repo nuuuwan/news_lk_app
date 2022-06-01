@@ -1,3 +1,4 @@
+import TimeXFuture from "../../nonview/base/TimeXFuture";
 import WWWFuture from "../../nonview/base/WWWFuture";
 import { URL_DATA } from "../../nonview/constants/Data";
 
@@ -11,6 +12,18 @@ export default class ArticleSummary {
     this.timeUT = timeUT;
     this.title = title;
     this.fileName = fileName;
+  }
+
+  get timeStrHumanized() {
+    return TimeXFuture.humanizeUT(this.timeUT);
+  }
+
+  get timeStr() {
+    return TimeXFuture.localeString(this.timeUT);
+  }
+
+  get urlShort() {
+    return this.url.split("/").splice(0, 3).join("/");
   }
 
   static fromDict(d) {
