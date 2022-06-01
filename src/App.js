@@ -32,7 +32,7 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={THEME}>
-        <Box sx={{ maxWidth: "90%", width: 700, margin: "auto" }}>
+        <Box sx={{ maxWidth: "90%", width: 500, margin: "auto" }}>
           <HomePage />
           <VersionWidget />
         </Box>
