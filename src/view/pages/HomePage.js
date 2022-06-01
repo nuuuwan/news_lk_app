@@ -56,7 +56,7 @@ export default class HomePage extends Component {
     return (
       <Box sx={STYLE}>
         <RefreshButton onClick={this.onClickRefresh.bind(this)} />
-        <Stack key={"articles-" + timeLatestReload} spacing={4}>
+        <Stack key={"articles-" + timeLatestReload} spacing={2}>
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
             return (
