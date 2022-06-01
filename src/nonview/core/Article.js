@@ -5,6 +5,7 @@ import { URL_DATA } from "../../nonview/constants/Data";
 
 const URL_ARTICLES = URL_DATA + "/articles";
 const MAX_WORDS_BODY_LINES_LIMITED = 100;
+const READING_SPEED_WPM = 200;
 
 export default class Article {
   constructor(newspaperID, url, timeUT, title, bodyLines) {
@@ -15,8 +16,12 @@ export default class Article {
     this.bodyLines = bodyLines;
   }
 
+  get timeStrHumanized() {
+    return TimeXFuture.humanizeUT(this.timeUT) + " (" + this.timeStr + ")";
+  }
+
   get timeStr() {
-    return TimeXFuture.humanizeUT(this.timeUT);
+    return TimeXFuture.localeString(this.timeUT);
   }
 
   get bodyLinesLimited() {
@@ -36,6 +41,22 @@ export default class Article {
 
   get urlShort() {
     return this.url.split("/").splice(0, 3).join("/");
+  }
+
+  get body() {
+    return this.bodyLines.join("\n");
+  }
+
+  get words() {
+    return this.body.split(" ");
+  }
+
+  get wordCount() {
+    return this.words.length;
+  }
+
+  get readingTimeMinutes() {
+    return Math.ceil(this.wordCount / READING_SPEED_WPM);
   }
 
   static fromDict(d) {
