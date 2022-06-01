@@ -40,7 +40,7 @@ export default class HomePage extends Component {
   }
 
   async onClickRefresh() {
-    await this.refreshData();
+    window.location.reload();
   }
 
   render() {
