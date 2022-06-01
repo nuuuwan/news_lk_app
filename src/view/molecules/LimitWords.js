@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 import Condition from "../../view/atoms/Condition";
@@ -19,7 +18,7 @@ export default function LimitWords({ lines, wordLimit }) {
     } else {
       optionalLines.push(line);
     }
-    wordCount += words.length;    
+    wordCount += words.length;
   }
 
   const [show, setShow] = useState(false);
