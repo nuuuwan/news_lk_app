@@ -1,13 +1,21 @@
+import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
-export default function RefreshButton({ onClick }) {
+import TimeXFuture from "../../nonview/base/TimeXFuture";
+
+export default function RefreshButton({ onClick, timeLatestRefresh }) {
+  const timeLatestRefreshStr =
+    "Last refreshed " + TimeXFuture.localeString(timeLatestRefresh);
   return (
-    <IconButton
-      onClick={onClick}
-      style={{ position: "fixed", top: "2%", right: "5%" }}
-    >
-      <RefreshIcon />
-    </IconButton>
+    <Grid container direcion="row" justifyContent="flex-end">
+      <IconButton onClick={onClick}>
+        <Typography variant="caption" sx={{ color: "#ccc", marginLeft: 1 }}>
+          {timeLatestRefreshStr}
+        </Typography>
+        <RefreshIcon />
+      </IconButton>
+    </Grid>
   );
 }
