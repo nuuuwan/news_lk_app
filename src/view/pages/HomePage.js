@@ -1,5 +1,5 @@
-import * as React from "react";
 import { Component } from "react";
+import * as React from "react";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -63,7 +63,10 @@ export default class HomePage extends Component {
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
             return (
-              <ArticleView key={"article-" + fileName} fileName={fileName} />
+              <ArticleView
+                key={"article-" + fileName}
+                articleSummary={articleSummary}
+              />
             );
           })}
         </Stack>
