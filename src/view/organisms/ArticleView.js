@@ -13,8 +13,9 @@ export default class ArticleView extends Component {
   }
 
   async componentDidMount() {
+    const article = await Article.loadArticle(this.props.fileName);
     this.setState({
-      article: await Article.loadArticle(this.props.fileName),
+      article,
     });
   }
 
