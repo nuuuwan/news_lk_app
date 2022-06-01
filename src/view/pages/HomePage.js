@@ -1,5 +1,5 @@
-import * as React from "react";
 import { Component } from "react";
+import * as React from "react";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -9,7 +9,7 @@ import { TimeX } from "@nuuuwan/utils-js-dev";
 
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
-import RefreshButton from "../../view/atoms/RefreshButton";
+import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
 
 const STYLE = {
@@ -40,7 +40,11 @@ export default class HomePage extends Component {
   }
 
   async onClickRefresh() {
-    window.location.reload();
+    await this.refreshData();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }
 
   render() {
@@ -55,10 +59,6 @@ export default class HomePage extends Component {
     );
     return (
       <Box sx={STYLE}>
-        <RefreshButton
-          onClick={this.onClickRefresh.bind(this)}
-          timeLatestRefresh={timeLatestRefresh}
-        />
         <Stack key={"articles-" + timeLatestRefresh} spacing={2}>
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
@@ -67,6 +67,9 @@ export default class HomePage extends Component {
             );
           })}
         </Stack>
+        <HomePageBottomNavigation
+          onClickRefresh={this.onClickRefresh.bind(this)}
+        />
       </Box>
     );
   }
