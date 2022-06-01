@@ -68,6 +68,7 @@ export default class HomePage extends Component {
           })}
         </Stack>
         <HomePageBottomNavigation
+          timeLatestRefresh={timeLatestRefresh}
           onClickRefresh={this.onClickRefresh.bind(this)}
         />
       </Box>
