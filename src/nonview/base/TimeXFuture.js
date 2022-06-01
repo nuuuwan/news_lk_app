@@ -26,7 +26,7 @@ export default class TimeXFuture {
     return TimeXFuture.humanize(deltaT);
   }
 
-  static localString(ut) {
+  static localeString(ut) {
     return new Date(ut * 1000.0).toLocaleString("si-LK");
   }
 }
