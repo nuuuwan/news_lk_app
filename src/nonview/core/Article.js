@@ -17,7 +17,7 @@ export default class Article {
   }
 
   get timeStrHumanized() {
-    return TimeXFuture.humanizeUT(this.timeUT) + " (" + this.timeStr + ")";
+    return TimeXFuture.humanizeUT(this.timeUT);
   }
 
   get timeStr() {
