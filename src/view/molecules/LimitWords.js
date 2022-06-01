@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 
 import Condition from "../../view/atoms/Condition";
 import MultiLines from "../../view/molecules/MultiLines";
@@ -27,6 +28,10 @@ export default function LimitWords({ lines, wordLimit }) {
     setShow(true);
   };
 
+  const onClickShowLess = function () {
+    setShow(false);
+  };
+
   return (
     <Box>
       <MultiLines lines={mandatoryLines} />
@@ -35,7 +40,12 @@ export default function LimitWords({ lines, wordLimit }) {
       </Condition>
       <Condition condition={!show}>
         <IconButton onClick={onClickShowMore}>
-          <MoreHorizIcon />
+          <UnfoldMoreIcon />
+        </IconButton>
+      </Condition>
+      <Condition condition={show}>
+        <IconButton onClick={onClickShowLess}>
+          <UnfoldLessIcon />
         </IconButton>
       </Condition>
     </Box>
