@@ -1,9 +1,11 @@
-import * as React from "react";
 import { Component } from "react";
+import * as React from "react";
 
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
+
+import { TimeX } from "@nuuuwan/utils-js-dev";
 
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
@@ -24,14 +26,25 @@ export default class HomePage extends Component {
     this.state = { articleSummaryList: null };
   }
 
-  async componentDidMount() {
+  async reloadData() {
+    const articleSummaryList = await ArticleSummary.loadArticleSummaryList();
+    const timeLatestReload = TimeX.getUnixTime();
     this.setState({
-      articleSummaryList: await ArticleSummary.loadArticleSummaryList(),
+      articleSummaryList,
+      timeLatestReload,
     });
   }
 
+  async componentDidMount() {
+    await this.reloadData();
+  }
+
+  async onClickRefresh() {
+    await this.reloadData();
+  }
+
   render() {
-    const { articleSummaryList } = this.state;
+    const { articleSummaryList, timeLatestReload } = this.state;
     if (!articleSummaryList) {
       return <CircularProgress />;
     }
@@ -42,8 +55,8 @@ export default class HomePage extends Component {
     );
     return (
       <Box sx={STYLE}>
-        <RefreshButton />
-        <Stack spacing={4}>
+        <RefreshButton onClick={this.onClickRefresh.bind(this)} />
+        <Stack key={"articles-" + timeLatestReload} spacing={4}>
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
             return (
