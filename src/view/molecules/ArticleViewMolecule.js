@@ -2,6 +2,8 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
+
+import DotSeparator from "../../view/molecules/DotSeparator";
 import LimitWords from "../../view/molecules/LimitWords";
 
 export default function ArticleViewMolecule({ article }) {
@@ -21,13 +23,16 @@ export default function ArticleViewMolecule({ article }) {
           {article.urlShort}
         </Typography>
       </Link>
-      <Typography variant="caption" component="div" sx={{ color: colorDate }}>
-        {article.timeStr}
-      </Typography>
+      <DotSeparator sx={{ color: colorDate }}>
+        <Typography variant="caption">
+          {article.readingTimeMinutes + " minute read"}
+        </Typography>
+        <Typography variant="caption">{article.timeStrHumanized}</Typography>
+      </DotSeparator>
       <Typography variant="h6" sx={{ color: colorTitle }}>
         {article.title}
       </Typography>
-      <LimitWords lines={article.bodyLines} wordLimit={100} />
+      <LimitWords lines={article.bodyLines} wordLimit={50} />
     </Box>
   );
 }
