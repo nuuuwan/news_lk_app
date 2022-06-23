@@ -9,6 +9,7 @@ import { TimeX } from "@nuuuwan/utils-js-dev";
 import I18N from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
+import CustomAppBar from "../../view/molecules/CustomAppBar";
 
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
@@ -88,6 +89,7 @@ export default class HomePage extends Component {
     );
     return (
       <Box sx={STYLE}>
+        <CustomAppBar />
         <Stack key={"articles-" + timeLatestRefresh} spacing={2}>
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
