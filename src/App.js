@@ -9,16 +9,10 @@ import HomePage from "./view/pages/HomePage.js";
 const THEME = createTheme({
   palette: {
     primary: {
-      main: SriLankaColors.Sinhala,
+      main: "#ccc",
     },
     secondary: {
-      main: SriLankaColors.Tamil,
-    },
-    success: {
-      main: SriLankaColors.Muslim,
-    },
-    info: {
-      main: SriLankaColors.Buddhist,
+      main: "#888",
     },
   },
   typography: {
