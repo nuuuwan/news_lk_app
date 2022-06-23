@@ -40,33 +40,19 @@ export default class TimeX {
   }
 
   static getHumanTime(ut) {
-    if (ut < SECONDS_IN.DAY) {
-      return t("Never");
+    const delta = TimeX.getUnixTime() - ut;
+    for (let [duration, label] of [
+      [SECONDS_IN.DAY, "day"],
+      [SECONDS_IN.HOUR, "hour"],
+      [SECONDS_IN.MINUTE, "minute"],
+    ]) {
+      if (delta > duration) {
+        const x = parseInt(delta / duration);
+        const pluralStr = x === 1 ? "" : "s";
+        return t(`000 ${label}${pluralStr} ago`, x);
+      }
     }
 
-    const delta = ut - TimeX.getUnixTime();
-    const absStr = TimeX.getHumanTimeAbs(delta);
-    if (delta > 0) {
-      return `${t("In")} ${absStr}`;
-    }
-    return `${absStr} ${t("ago")}`;
-  }
-
-  static getHumanTimeAbs(deltaOriginal) {
-    const delta = Math.abs(deltaOriginal);
-    if (delta < SECONDS_IN.MINUTE * 2) {
-      return "Now";
-    }
-    if (delta < SECONDS_IN.HOUR * 2) {
-      const x = parseInt(delta / SECONDS_IN.MINUTE);
-      return x + ` ${t("minutes")}`;
-    }
-
-    if (delta < SECONDS_IN.DAY * 2) {
-      const x = parseInt(delta / SECONDS_IN.HOUR);
-      return x + ` ${t("hours")}`;
-    }
-    const x = parseInt(delta / SECONDS_IN.DAY);
-    return x + ` ${t("days")}`;
+    return t("Now");
   }
 }
