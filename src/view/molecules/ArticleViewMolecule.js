@@ -1,8 +1,7 @@
 import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
+import Alert from '@mui/material/Alert';
 
 import I18N, { t, LANG_IDX, BASE_LANG } from "../../nonview/base/I18N";
 
@@ -12,37 +11,32 @@ import LimitWords from "../../view/molecules/LimitWords";
 
 export default function ArticleViewMolecule({
   articleSummary,
+  article,
   translatedArticle,
 }) {
-  const theme = useTheme();
-  const colorTitle = theme.palette.primary.main;
-  const colorDate = theme.palette.secondary.main;
-  const colorNewspaper = theme.palette.success.main;
-
-  const isArticleNotNull = translatedArticle !== null;
+  const sourceLang = I18N.getLang();
 
   let title = articleSummary.title;
   let bodyLines = [];
   let originalLang = BASE_LANG;
-
-  if (translatedArticle) {
-    originalLang = translatedArticle.originalLang;
-    const sourceLang = I18N.getLang();
-    if (originalLang === sourceLang) {
-      title = translatedArticle.title;
-      bodyLines = translatedArticle.bodyLines;
-    } else {
-      const translation = translatedArticle.translate[sourceLang];
-      if (translation) {
-        title = translation.title;
-        bodyLines = translation.bodyLines;
-      }
-    }
+  if (translatedArticle?.originalLang) {
+    originalLang = translatedArticle?.originalLang;
   }
 
-  let langLabel = "";
-  if (originalLang) {
-    langLabel = " (" + t(LANG_IDX[originalLang].labelEn) + ")";
+  if (
+    translatedArticle
+    && originalLang !== sourceLang
+    && translatedArticle.translate[sourceLang]
+  ) {
+    const translation = translatedArticle.translate[sourceLang];
+    title = translation.title;
+    bodyLines = translation.bodyLines;
+  } else if (article) {
+    title = article.title;
+    bodyLines = article.bodyLines;
+  } else {
+    title = articleSummary.title;
+    bodyLines = [];
   }
 
   return (
@@ -50,36 +44,42 @@ export default function ArticleViewMolecule({
       <Link
         href={articleSummary.url}
         target="_blank"
-        sx={{ textDecoration: "none" }}
+        sx={{ textDecoration: "none"}}
       >
-        <Typography variant="caption" sx={{ color: colorNewspaper }}>
+        <Typography variant="caption" color="#080"  >
           {articleSummary.urlShort}
-        </Typography>
-        <Typography variant="caption" sx={{ color: colorNewspaper }}>
-          {langLabel}
         </Typography>
       </Link>
 
-      <Typography variant="h6" sx={{ color: colorTitle }}>
+      <Typography variant="h6" color="primary">
         {title}
       </Typography>
 
-      <Condition condition={isArticleNotNull}>
-        <DotSeparator sx={{ color: colorDate }}>
-          <Typography variant="caption">
-            {translatedArticle?.readingTimeMinutes + " " + t("minute read")}
+      <Condition condition={article}>
+        <DotSeparator sx={{ color: "secondary" }}>
+          <Typography variant="caption" color="secondary">
+            {  t(LANG_IDX[originalLang].labelEn)}
           </Typography>
-          <Typography variant="caption">
+          <Typography variant="caption" color="secondary">
+            {article?.readingTimeMinutes + " " + t("minute read")}
+          </Typography>
+          <Typography variant="caption" color="secondary">
             {articleSummary.timeStrHumanized}
           </Typography>
-          <Typography variant="caption">{articleSummary.timeStr}</Typography>
+          <Typography variant="caption" color="secondary">
+            {articleSummary.timeStr}
+          </Typography>
         </DotSeparator>
         <LimitWords lines={bodyLines} wordLimit={50} />
       </Condition>
 
-      <Condition condition={!isArticleNotNull}>
-        <CircularProgress />
+      <Condition condition={!translatedArticle}>
+        <Alert severity="warning">
+          {t("This article is yet to be translated. Try again later.")}
+        </Alert>
       </Condition>
+
+
     </Box>
   );
 }

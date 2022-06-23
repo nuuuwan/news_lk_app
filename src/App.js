@@ -9,11 +9,14 @@ import HomePage from "./view/pages/HomePage.js";
 const THEME = createTheme({
   palette: {
     primary: {
-      main: "#ccc",
+      main: "#800",
     },
     secondary: {
-      main: "#888",
+      main: "#f80",
     },
+    success : {
+      main: "#080",
+    }
   },
   typography: {
     fontFamily: ["Nunito Sans", "sans-serif"].join(","),
