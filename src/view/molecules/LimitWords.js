@@ -12,6 +12,9 @@ import Condition from "../../view/atoms/Condition";
 import MultiLines from "../../view/molecules/MultiLines";
 
 export default function LimitWords({ lines, wordLimit }) {
+  if (!lines) {
+    lines = [];
+  }
   let mandatoryLines = [],
     optionalLines = [];
   let wordCount = 0;
