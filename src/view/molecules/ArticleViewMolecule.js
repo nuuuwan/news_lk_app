@@ -72,6 +72,9 @@ export default function ArticleViewMolecule({
           <Typography variant="caption">
             {articleSummary.timeStrHumanized}
           </Typography>
+          <Typography variant="caption">
+            {articleSummary.timeStr}
+          </Typography>
         </DotSeparator>
         <LimitWords lines={bodyLines} wordLimit={50} />
       </Condition>
