@@ -65,7 +65,7 @@ export default function ArticleViewMolecule({
             color={originalLangObj.color}
             sx={{ opacity: 0.33 }}
           >
-            {t("Originally Published in the 000 Language", t(originalLangObj.labelEn))}
+            {t("Originally published in the 000 Language", t(originalLangObj.labelEn))}
           </Typography>
         </Condition>
       </Link>
