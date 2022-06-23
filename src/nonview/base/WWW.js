@@ -14,9 +14,13 @@ export default class WWW {
 
 export class JSONWWW extends WWW {
   async readNoCache() {
-    const response = await fetch(this.url, JSON_HEADERS);
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch(this.url, JSON_HEADERS);
+      const data = await response.json();
+      return data;
+    } catch (err) {
+      return null;
+    }
   }
 
   async read() {
