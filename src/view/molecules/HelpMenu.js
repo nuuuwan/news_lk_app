@@ -7,10 +7,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SettingsIcon from "@mui/icons-material/Settings";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 import { t } from "../../nonview/base/I18N";
 
 const MENU_ITEM_LIST = [
+  {
+    name: "Help (Twitter)",
+    url: "http://twitter.com/nuuuwan",
+    Icon: TwitterIcon,
+  },
   {
     name: "Code - React App",
     url: "http://github.com/nuuuwan/news_lk_app",
