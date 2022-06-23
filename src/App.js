@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import HomePage from "./view/pages/HomePage.js";
@@ -24,9 +23,7 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={THEME}>
-        <Box sx={{ maxWidth: "90%", width: 500, margin: "auto" }}>
-          <HomePage />
-        </Box>
+        <HomePage />
       </ThemeProvider>
     );
   }

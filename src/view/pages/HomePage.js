@@ -14,9 +14,9 @@ import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigat
 import ArticleView from "../../view/organisms/ArticleView";
 
 const STYLE = {
-  margin: 2,
-  marginTop: 2,
-  marginBottom: 2,
+  width: 400,
+  maxWidth: "90%",
+  margin: "auto",
 };
 
 const MAX_ARTICLES_TO_DISPLAY = 100;
