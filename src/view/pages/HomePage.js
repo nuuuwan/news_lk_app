@@ -68,11 +68,7 @@ export default class HomePage extends Component {
   }
 
   async onClickRefresh() {
-    await this.refreshData();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.location.reload(true);
   }
 
   async onSelectLanguage(lang) {
