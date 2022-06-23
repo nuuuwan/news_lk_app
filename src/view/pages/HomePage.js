@@ -9,8 +9,8 @@ import { TimeX } from "@nuuuwan/utils-js-dev";
 import I18N from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
-import CustomAppBar from "../../view/molecules/CustomAppBar";
 
+import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
 
