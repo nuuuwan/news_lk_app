@@ -14,7 +14,10 @@
 000 seconds
 000 seconds ago
 000 weeks
+Code - Data
+Code - React App
 English
+Help (Twitter)
 Just now
 Now
 Original language
