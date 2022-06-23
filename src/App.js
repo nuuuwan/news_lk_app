@@ -12,7 +12,7 @@ const THEME = createTheme({
     },
     secondary: {
       main: "#f80",
-    }
+    },
   },
   typography: {
     fontFamily: ["Nunito Sans", "sans-serif"].join(","),
