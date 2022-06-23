@@ -6,12 +6,12 @@ import Stack from "@mui/material/Stack";
 
 import { TimeX } from "@nuuuwan/utils-js-dev";
 
+import I18N from "../../nonview/base/I18N";
+import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
-import URLContext from "../../nonview/base/URLContext";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
-import I18N from "../../nonview/base/I18N";
 
 const STYLE = {
   margin: 2,
@@ -25,7 +25,12 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
     const context = this.getContext();
-    this.state = { articleSummaryList: null, timeLatestRefresh: null };
+    this.state = {
+      context,
+      articleSummaryList: null,
+      timeLatestRefresh: null,
+    };
+    this.isComponentMounted = false;
     this.setContext(context);
   }
 
@@ -37,9 +42,15 @@ export default class HomePage extends Component {
     return context;
   }
 
-  setContext(context) {
+  setContext(newContext) {
+    const oldContext = this.getContext();
+    const context = { ...oldContext, ...newContext };
     URLContext.setContext(context);
     I18N.setLang(context.lang);
+
+    if (this.isComponentMounted) {
+      this.setState({ context });
+    }
   }
 
   async refreshData() {
@@ -52,6 +63,7 @@ export default class HomePage extends Component {
   }
 
   async componentDidMount() {
+    this.isComponentMounted = true;
     await this.refreshData();
   }
 
@@ -63,13 +75,17 @@ export default class HomePage extends Component {
     });
   }
 
+  async onSelectLanguage(lang) {
+    this.setContext({ lang });
+  }
+
   render() {
     const { articleSummaryList, timeLatestRefresh } = this.state;
-    if (!articleSummaryList) {
+    if (!articleSummaryList || articleSummaryList.length === 0) {
       return <CircularProgress />;
     }
 
-    const articleSummaryListToDisplay = articleSummaryList.splice(
+    const articleSummaryListToDisplay = articleSummaryList.slice(
       0,
       MAX_ARTICLES_TO_DISPLAY
     );
@@ -89,6 +105,7 @@ export default class HomePage extends Component {
         <HomePageBottomNavigation
           timeLatestRefresh={timeLatestRefresh}
           onClickRefresh={this.onClickRefresh.bind(this)}
+          onSelectLanguage={this.onSelectLanguage.bind(this)}
         />
       </Box>
     );
