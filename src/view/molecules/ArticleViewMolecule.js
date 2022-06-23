@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
-import I18N, { t, LANG_IDX, BASE_LANG } from "../../nonview/base/I18N";
+import I18N, { t, LANG_IDX } from "../../nonview/base/I18N";
 
 import Condition from "../../view/atoms/Condition";
 import DotSeparator from "../../view/molecules/DotSeparator";
@@ -18,10 +18,7 @@ export default function ArticleViewMolecule({
 
   let title = articleSummary.title;
   let bodyLines = [];
-  let originalLang = BASE_LANG;
-  if (translatedArticle?.originalLang) {
-    originalLang = translatedArticle?.originalLang;
-  }
+  let originalLang = article.originalLang;
 
   if (
     translatedArticle &&

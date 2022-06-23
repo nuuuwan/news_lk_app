@@ -18,9 +18,11 @@ export default class ArticleView extends Component {
     const article = await Article.loadArticle(articleSummary.fileName);
 
     let translatedArticle = null;
-    translatedArticle = await TranslatedArticle.loadTranslatedArticle(
-      articleSummary.fileName
-    );
+    if (articleSummary.isTranslated) {
+      translatedArticle = await TranslatedArticle.loadTranslatedArticle(
+        articleSummary.fileName
+      );
+    }
 
     this.setState({
       article,
