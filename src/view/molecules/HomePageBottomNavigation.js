@@ -38,7 +38,7 @@ export default function HomePageBottomNavigation({
         <BottomNavigationAction
           icon={<RefreshIcon />}
           onClick={onClickRefresh}
-        />        
+        />
       </BottomNavigation>
     </Paper>
   );
