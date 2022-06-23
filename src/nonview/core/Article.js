@@ -59,7 +59,7 @@ export default class Article extends ArticleSummary {
   static async loadRawArticle(fileName) {
     const urlArticle = [URL_ARTICLES, fileName].join("/");
     const jsonWWW = new JSONWWW(urlArticle);
-    return await jsonWWW.readCache();
+    return await jsonWWW.read();
   }
 
   static async loadArticle(fileName) {
