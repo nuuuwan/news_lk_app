@@ -7,10 +7,10 @@ import HomePage from "./view/pages/HomePage.js";
 const THEME = createTheme({
   palette: {
     primary: {
-      main: "#800",
+      main: "#444",
     },
     secondary: {
-      main: "#f80",
+      main: "#888",
     },
   },
   typography: {
