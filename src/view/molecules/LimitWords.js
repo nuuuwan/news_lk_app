@@ -52,7 +52,7 @@ export default function LimitWords({ lines, wordLimit }) {
         <MultiLines lines={optionalLines} color="gray" />
         <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
           <ExpandLessIcon />
-          <Typography variant="caption">Read less</Typography>
+          <Typography variant="caption">{t("Read less")}</Typography>
         </IconButton>
       </Condition>
     </Box>
