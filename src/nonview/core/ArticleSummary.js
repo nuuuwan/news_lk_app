@@ -1,5 +1,5 @@
 import TimeX from "../../nonview/base/TimeX";
-import {JSONWWW} from "../../nonview/base/WWW";
+import { JSONWWW } from "../../nonview/base/WWW";
 import { URL_DATA } from "../../nonview/constants/Data";
 
 const URL_RAW_ARTICLES = URL_DATA + "/articles.summary.latest.json";
@@ -37,7 +37,7 @@ export default class ArticleSummary {
   }
 
   static async loadArticleSummaryList() {
-    const jsonWWW = new JSONWWW(URL_RAW_ARTICLES)
+    const jsonWWW = new JSONWWW(URL_RAW_ARTICLES);
     const rawArticleSummaryList = await jsonWWW.readNoCache();
     return rawArticleSummaryList.map(function (d) {
       return ArticleSummary.fromDict(d);

@@ -60,7 +60,7 @@ export default class Article extends ArticleSummary {
   }
 
   static async loadArticle(fileName) {
-    const cache = new Cache("article:" + fileName)
+    const cache = new Cache("article:" + fileName);
     const rawArticle = await cache.get(async function () {
       return await Article.loadRawArticle(fileName);
     });
