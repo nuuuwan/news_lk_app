@@ -18,7 +18,8 @@ const STYLE = {
   width: 400,
   maxWidth: "90%",
   margin: "auto",
-  marginTop: 2,
+  marginTop: 5,
+  marginBottom: 5,
 };
 
 const MAX_ARTICLES_TO_DISPLAY = 100;
