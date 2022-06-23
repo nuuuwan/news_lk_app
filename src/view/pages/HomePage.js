@@ -16,7 +16,7 @@ import ArticleView from "../../view/organisms/ArticleView";
 const STYLE = {
   width: 400,
   maxWidth: "90%",
-  margin: "auto",
+  m: 2,
 };
 
 const MAX_ARTICLES_TO_DISPLAY = 100;
