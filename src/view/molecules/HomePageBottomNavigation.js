@@ -24,7 +24,7 @@ export default function HomePageBottomNavigation({
           const onClickInner = function () {
             onSelectLanguage(lang.lang);
           };
-          const color = (lang.lang === I18N.getLang()) ? lang.color : "primary";
+          const color = (lang.lang === I18N.getLang()) ? lang.color : "neutral";
 
           return (
             <BottomNavigationAction
