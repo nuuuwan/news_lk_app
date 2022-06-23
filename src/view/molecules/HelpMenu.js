@@ -14,7 +14,7 @@ import { t } from "../../nonview/base/I18N";
 const MENU_ITEM_LIST = [
   {
     name: "Help (Twitter)",
-    url: "http://twitter.com/nuuuwan",
+    url: "https://twitter.com/nuuuwan/status/1539982615662383105",
     Icon: TwitterIcon,
   },
   {
