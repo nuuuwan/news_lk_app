@@ -56,6 +56,9 @@ export default class TranslatedArticle extends Article {
     const rawArticle = await cache.get(async function () {
       return await TranslatedArticle.loadRawTranslatedArticle(fileName);
     });
+    if (!rawArticle) {
+      return null;
+    }
     return TranslatedArticle.fromDict(rawArticle);
   }
 }
