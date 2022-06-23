@@ -1,7 +1,7 @@
+import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import Alert from '@mui/material/Alert';
 
 import I18N, { t, LANG_IDX, BASE_LANG } from "../../nonview/base/I18N";
 
@@ -24,9 +24,9 @@ export default function ArticleViewMolecule({
   }
 
   if (
-    translatedArticle
-    && originalLang !== sourceLang
-    && translatedArticle.translate[sourceLang]
+    translatedArticle &&
+    originalLang !== sourceLang &&
+    translatedArticle.translate[sourceLang]
   ) {
     const translation = translatedArticle.translate[sourceLang];
     title = translation.title;
@@ -44,42 +44,45 @@ export default function ArticleViewMolecule({
       <Link
         href={articleSummary.url}
         target="_blank"
-        sx={{ textDecoration: "none"}}
+        sx={{ textDecoration: "none" }}
       >
-        <Typography variant="caption" color="#080"  >
-          {articleSummary.urlShort}
-        </Typography>
-      </Link>
-
-      <Typography variant="h6" color="primary">
-        {title}
-      </Typography>
-
-      <Condition condition={article}>
         <DotSeparator sx={{ color: "secondary" }}>
-          <Typography variant="caption" color="secondary">
-            {  t(LANG_IDX[originalLang].labelEn)}
+          <Typography variant="caption" color="#080">
+            {articleSummary.urlShort}
           </Typography>
-          <Typography variant="caption" color="secondary">
-            {article?.readingTimeMinutes + " " + t("minute read")}
-          </Typography>
-          <Typography variant="caption" color="secondary">
+
+          <Typography variant="caption" color="#080">
             {articleSummary.timeStrHumanized}
           </Typography>
-          <Typography variant="caption" color="secondary">
+          <Typography variant="caption" color="#080">
             {articleSummary.timeStr}
           </Typography>
         </DotSeparator>
-        <LimitWords lines={bodyLines} wordLimit={50} />
-      </Condition>
+
+        <Typography variant="h6" color="primary">
+          {title}
+        </Typography>
+
+        <DotSeparator sx={{ color: "secondary" }}>
+          <Typography variant="caption" color="secondary">
+            {t(
+              "Published in the 000 Language",
+              t(LANG_IDX[originalLang].labelEn)
+            )}
+          </Typography>
+          <Typography variant="caption" color="secondary">
+            {t("Reading time is 000 minutes", article.readingTimeMinutes)}
+          </Typography>
+        </DotSeparator>
+      </Link>
+
+      <LimitWords lines={bodyLines} wordLimit={50} />
 
       <Condition condition={!translatedArticle}>
         <Alert severity="warning">
           {t("This article is yet to be translated. Try again later.")}
         </Alert>
       </Condition>
-
-
     </Box>
   );
 }
