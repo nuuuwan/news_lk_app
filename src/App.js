@@ -14,7 +14,7 @@ const THEME = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Nunito Sans", "sans-serif"].join(","),
+    fontFamily: ["Cambay", "Cabin", "sans-serif"].join(","),
     fontSize: 12,
   },
 });
