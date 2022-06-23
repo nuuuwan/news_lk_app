@@ -15,9 +15,9 @@ class Lang {
 }
 
 export const LANG_LIST = [
-  new Lang("en", "English", "English", "En", "success"),
-  new Lang("ta", "தமிழ்", "Tamil", "த", "secondary"),
-  new Lang("si", "සිංහල", "Sinhala", "සිං", "primary"),
+  new Lang("en", "English", "English", "En", "#080"),
+  new Lang("ta", "தமிழ்", "Tamil", "த", "#f80"),
+  new Lang("si", "සිංහල", "Sinhala", "සිං", "#800"),
 ];
 
 export const LANG_IDX = IDX.build(
