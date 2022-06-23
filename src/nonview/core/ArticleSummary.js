@@ -20,7 +20,7 @@ export default class ArticleSummary {
   }
 
   get timeStr() {
-    return TimeX.localeString(this.timeUT);
+    return TimeX.formatTime(this.timeUT);
   }
 
   get urlShort() {
