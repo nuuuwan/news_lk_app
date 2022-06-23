@@ -12,15 +12,12 @@ export default class ArticleView extends Component {
 
   async componentDidMount() {
     const { articleSummary } = this.props;
-
     const article = await Article.loadArticle(articleSummary.fileName);
 
     let translatedArticle = null;
-    if (articleSummary.isTranslated) {
-      translatedArticle = await TranslatedArticle.loadTranslatedArticle(
-        articleSummary.fileName
-      );
-    }
+    translatedArticle = await TranslatedArticle.loadTranslatedArticle(
+      articleSummary.fileName
+    );
 
     this.setState({
       article,
