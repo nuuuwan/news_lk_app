@@ -1,7 +1,10 @@
 import { Component } from "react";
+
 import CircularProgress from "@mui/material/CircularProgress";
-import TranslatedArticle from "../../nonview/core/TranslatedArticle";
+
 import Article from "../../nonview/core/Article";
+import TranslatedArticle from "../../nonview/core/TranslatedArticle";
+
 import ArticleViewMolecule from "../../view/molecules/ArticleViewMolecule";
 
 export default class ArticleView extends Component {
