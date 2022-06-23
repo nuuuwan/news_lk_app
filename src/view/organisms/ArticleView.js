@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import Article from "../../nonview/core/Article";
+import TranslatedArticle from "../../nonview/core/TranslatedArticle";
 
 import ArticleViewMolecule from "../../view/molecules/ArticleViewMolecule";
 
@@ -12,17 +12,22 @@ export default class ArticleView extends Component {
 
   async componentDidMount() {
     const { articleSummary } = this.props;
-    const article = await Article.loadArticle(articleSummary.fileName);
+    const translatedArticle = await TranslatedArticle.loadTranslatedArticle(
+      articleSummary.fileName
+    );
     this.setState({
-      article,
+      translatedArticle,
     });
   }
 
   render() {
     const { articleSummary } = this.props;
-    const { article } = this.state;
+    const { translatedArticle } = this.state;
     return (
-      <ArticleViewMolecule articleSummary={articleSummary} article={article} />
+      <ArticleViewMolecule
+        articleSummary={articleSummary}
+        translatedArticle={translatedArticle}
+      />
     );
   }
 }

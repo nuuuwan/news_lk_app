@@ -4,19 +4,40 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
-import { t } from "../../nonview/base/I18N";
+import I18N, { t, LANG_IDX } from "../../nonview/base/I18N";
 
 import Condition from "../../view/atoms/Condition";
 import DotSeparator from "../../view/molecules/DotSeparator";
 import LimitWords from "../../view/molecules/LimitWords";
 
-export default function ArticleViewMolecule({ articleSummary, article }) {
+export default function ArticleViewMolecule({
+  articleSummary,
+  translatedArticle,
+}) {
   const theme = useTheme();
   const colorTitle = theme.palette.primary.main;
   const colorDate = theme.palette.secondary.main;
   const colorNewspaper = theme.palette.success.main;
 
-  const isArticleNotNull = article !== null;
+  const isArticleNotNull = translatedArticle !== null;
+
+  let title, bodyLines, originalLang;
+  if (translatedArticle) {
+    originalLang = translatedArticle.originalLang;
+
+    const sourceLang = I18N.getLang();
+    const translation = translatedArticle.translate[sourceLang];
+    title = translation.title;
+    bodyLines = translation.bodyLines;
+  } else {
+    title = articleSummary.title;
+    bodyLines = [];
+  }
+
+  let langLabel = "";
+  if (originalLang) {
+    langLabel = " (" + t(LANG_IDX[originalLang].labelEn) + ")";
+  }
 
   return (
     <Box>
@@ -25,29 +46,28 @@ export default function ArticleViewMolecule({ articleSummary, article }) {
         target="_blank"
         sx={{ textDecoration: "none" }}
       >
-        <Typography
-          variant="caption"
-          component="div"
-          sx={{ color: colorNewspaper }}
-        >
+        <Typography variant="caption" sx={{ color: colorNewspaper }}>
           {articleSummary.urlShort}
+        </Typography>
+        <Typography variant="caption" sx={{ color: colorNewspaper }}>
+          {langLabel}
         </Typography>
       </Link>
 
       <Typography variant="h6" sx={{ color: colorTitle }}>
-        {articleSummary.title}
+        {title}
       </Typography>
 
       <Condition condition={isArticleNotNull}>
         <DotSeparator sx={{ color: colorDate }}>
           <Typography variant="caption">
-            {article?.readingTimeMinutes + " " + t("minute read")}
+            {translatedArticle?.readingTimeMinutes + " " + t("minute read")}
           </Typography>
           <Typography variant="caption">
             {articleSummary.timeStrHumanized}
           </Typography>
         </DotSeparator>
-        <LimitWords lines={article?.bodyLines} wordLimit={50} />
+        <LimitWords lines={bodyLines} wordLimit={50} />
       </Condition>
 
       <Condition condition={!isArticleNotNull}>
