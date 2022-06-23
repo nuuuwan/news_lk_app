@@ -1,5 +1,5 @@
-import TimeXFuture from "../../nonview/base/TimeXFuture";
-import WWWFuture from "../../nonview/base/WWWFuture";
+import TimeX from "../../nonview/base/TimeX";
+import {JSONWWW} from "../../nonview/base/WWW";
 import { URL_DATA } from "../../nonview/constants/Data";
 
 const URL_RAW_ARTICLES = URL_DATA + "/articles.summary.latest.json";
@@ -15,11 +15,11 @@ export default class ArticleSummary {
   }
 
   get timeStrHumanized() {
-    return TimeXFuture.humanizeUT(this.timeUT);
+    return TimeX.getHumanTime(this.timeUT);
   }
 
   get timeStr() {
-    return TimeXFuture.localeString(this.timeUT);
+    return TimeX.localeString(this.timeUT);
   }
 
   get urlShort() {
@@ -37,9 +37,8 @@ export default class ArticleSummary {
   }
 
   static async loadArticleSummaryList() {
-    const rawArticleSummaryList = await WWWFuture.jsonNonCache(
-      URL_RAW_ARTICLES
-    );
+    const jsonWWW = new JSONWWW(URL_RAW_ARTICLES)
+    const rawArticleSummaryList = await jsonWWW.readNoCache();
     return rawArticleSummaryList.map(function (d) {
       return ArticleSummary.fromDict(d);
     });

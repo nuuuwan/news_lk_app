@@ -1,5 +1,5 @@
-import CacheFuture from "../../nonview/base/CacheFuture";
-import WWWFuture from "../../nonview/base/WWWFuture";
+import Cache from "../../nonview/base/Cache";
+import WWW from "../../nonview/base/WWW";
 import { URL_DATA } from "../../nonview/constants/Data";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
@@ -56,12 +56,12 @@ export default class Article extends ArticleSummary {
 
   static async loadRawArticle(fileName) {
     const urlArticle = [URL_ARTICLES, fileName].join("/");
-    return await WWWFuture.jsonNonCache(urlArticle);
+    return await WWW.jsonNonCache(urlArticle);
   }
 
   static async loadArticle(fileName) {
-    const cacheKey = "article:" + fileName;
-    const rawArticle = await CacheFuture.get(cacheKey, async function () {
+    const cache = new Cache("article:" + fileName)
+    const rawArticle = await cache.get(async function () {
       return await Article.loadRawArticle(fileName);
     });
     return Article.fromDict(rawArticle);
