@@ -14,7 +14,7 @@ export default function ArticleViewMolecule({
   article,
   translatedArticle,
 }) {
-  const sourceLang = I18N.getLang();
+  const currentLang = I18N.getLang();
 
   let title = articleSummary.title;
   let bodyLines = [];
@@ -22,10 +22,10 @@ export default function ArticleViewMolecule({
 
   if (
     translatedArticle &&
-    originalLang !== sourceLang &&
-    translatedArticle.translate[sourceLang]
+    originalLang !== currentLang &&
+    translatedArticle.translate[currentLang]
   ) {
-    const translation = translatedArticle.translate[sourceLang];
+    const translation = translatedArticle.translate[currentLang];
     title = translation.title;
     bodyLines = translation.bodyLines;
   } else if (article) {
@@ -36,6 +36,8 @@ export default function ArticleViewMolecule({
     bodyLines = [];
   }
 
+  const isInOriginalLang = originalLang === currentLang;
+  const originalLangObj = LANG_IDX[originalLang];
   return (
     <Box>
       <Link
@@ -43,34 +45,29 @@ export default function ArticleViewMolecule({
         target="_blank"
         sx={{ textDecoration: "none" }}
       >
-        <DotSeparator sx={{ color: "secondary" }}>
-          <Typography variant="caption" color="#080">
-            {articleSummary.urlShort}
-          </Typography>
-
-          <Typography variant="caption" color="#080">
-            {articleSummary.timeStrHumanized}
-          </Typography>
-          <Typography variant="caption" color="#080">
-            {articleSummary.timeStr}
-          </Typography>
-        </DotSeparator>
-
-        <Typography variant="h6" color="primary">
+        <Typography variant="h5" color={originalLangObj.color}>
           {title}
         </Typography>
 
         <DotSeparator sx={{ color: "secondary" }}>
           <Typography variant="caption" color="secondary">
-            {t(
-              "Published in the 000 Language",
-              t(LANG_IDX[originalLang].labelEn)
-            )}
+            {articleSummary.urlShort}
           </Typography>
+
           <Typography variant="caption" color="secondary">
-            {t("Reading time is 000 minutes", article.readingTimeMinutes)}
+            {articleSummary.timeStrHumanized}
           </Typography>
         </DotSeparator>
+
+        <Condition condition={!isInOriginalLang}>
+          <Typography
+            variant="caption"
+            color={originalLangObj.color}
+            sx={{ opacity: 0.33 }}
+          >
+            {t("Published in the 000 Language", t(originalLangObj.labelEn))}
+          </Typography>
+        </Condition>
       </Link>
 
       <LimitWords lines={bodyLines} wordLimit={50} />
