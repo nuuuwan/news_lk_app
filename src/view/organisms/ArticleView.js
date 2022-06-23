@@ -1,7 +1,7 @@
 import { Component } from "react";
-
+import CircularProgress from '@mui/material/CircularProgress';
 import TranslatedArticle from "../../nonview/core/TranslatedArticle";
-
+import Article from "../../nonview/core/Article"
 import ArticleViewMolecule from "../../view/molecules/ArticleViewMolecule";
 
 export default class ArticleView extends Component {
@@ -12,20 +12,28 @@ export default class ArticleView extends Component {
 
   async componentDidMount() {
     const { articleSummary } = this.props;
+    const article = await Article.loadArticle(
+      articleSummary.fileName
+    );
     const translatedArticle = await TranslatedArticle.loadTranslatedArticle(
       articleSummary.fileName
     );
     this.setState({
+      article,
       translatedArticle,
     });
   }
 
   render() {
     const { articleSummary } = this.props;
-    const { translatedArticle } = this.state;
+    const { translatedArticle, article } = this.state;
+    if (!article) {
+      return <CircularProgress />;
+    }
     return (
       <ArticleViewMolecule
         articleSummary={articleSummary}
+        article={article}
         translatedArticle={translatedArticle}
       />
     );
