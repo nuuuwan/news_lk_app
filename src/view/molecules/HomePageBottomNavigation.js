@@ -5,7 +5,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import I18N from "../../nonview/base/I18N"
+import I18N from "../../nonview/base/I18N";
 
 import { LANG_LIST } from "../../nonview/base/I18N";
 
@@ -24,7 +24,7 @@ export default function HomePageBottomNavigation({
           const onClickInner = function () {
             onSelectLanguage(lang.lang);
           };
-          const color = (lang.lang === I18N.getLang()) ? lang.color : "neutral";
+          const color = lang.lang === I18N.getLang() ? lang.color : "neutral";
 
           return (
             <BottomNavigationAction
