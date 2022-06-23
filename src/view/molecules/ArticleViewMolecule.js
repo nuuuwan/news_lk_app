@@ -4,6 +4,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
+import {t} from "../../nonview/base/I18N"
 import Condition from "../../view/atoms/Condition";
 import DotSeparator from "../../view/molecules/DotSeparator";
 import LimitWords from "../../view/molecules/LimitWords";
@@ -39,7 +40,7 @@ export default function ArticleViewMolecule({ articleSummary, article }) {
       <Condition condition={isArticleNotNull}>
         <DotSeparator sx={{ color: colorDate }}>
           <Typography variant="caption">
-            {article?.readingTimeMinutes + " minute read"}
+            {article?.readingTimeMinutes + " " + t("minute read")}
           </Typography>
           <Typography variant="caption">
             {articleSummary.timeStrHumanized}

@@ -1,7 +1,9 @@
+Read more
 Test
 ago
 days
 hours
+minute read
 minutes
 seconds
 weeks

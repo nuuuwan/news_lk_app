@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
+import {t} from "../../nonview/base/I18N"
 import Condition from "../../view/atoms/Condition";
 import MultiLines from "../../view/molecules/MultiLines";
 
@@ -39,7 +40,7 @@ export default function LimitWords({ lines, wordLimit }) {
       <Condition condition={!show && optionalLines.length > 0}>
         <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
           <ExpandMoreIcon />
-          <Typography variant="caption">Read more</Typography>
+          <Typography variant="caption">{t("Read more")}</Typography>
         </IconButton>
       </Condition>
 
