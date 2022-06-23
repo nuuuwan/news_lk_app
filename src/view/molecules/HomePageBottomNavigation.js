@@ -19,10 +19,6 @@ export default function HomePageBottomNavigation({
       elevation={3}
     >
       <BottomNavigation showLabels>
-        <BottomNavigationAction
-          icon={<RefreshIcon />}
-          onClick={onClickRefresh}
-        />
         {LANG_LIST.map(function (lang) {
           const onClickInner = function () {
             onSelectLanguage(lang.lang);
@@ -39,6 +35,10 @@ export default function HomePageBottomNavigation({
             />
           );
         })}
+        <BottomNavigationAction
+          icon={<RefreshIcon />}
+          onClick={onClickRefresh}
+        />        
       </BottomNavigation>
     </Paper>
   );
