@@ -1,29 +1,40 @@
-"An Truly Inclusive News App"
+1/ "A Truly Inclusive News App"
 
-1/ According to the 2012 census,
-21% of #SriLanka can't read සිංහල.
-70% can't read English
-74% can't read தமிழ்.
+What if there was a place where all #SriLanka could read news?
 
-Hence, most of SriLanka can't read
-most of the news published in SriLanka.
+A place without the segregations of language
+and the resulting echo chambers?
 
 https://nuuuwan.github.io/news_lk_app
-is a baby-step to fix this problem.
-#NewsLKApp #SriLanka
+is a #BabyStep in this direction.
+
+Read on for details.
+#NewsLKApp
 
 ...
 
-2/ #NewsLKApp presents news from multiple source,
+2/ According to the 2012 census,
+21% of Adult Sri Lankans can't read සිංහල.
+70% English
+74% தமிழ்.
+
+If you can't read  தமிழ்,
+you can't read news published in தமிழ்.
+Ditto English &  සිංහල.
+
+Hence, "segregation" & "echo-chambers".
+
+...
+
+3/ #NewsLKApp presents news from multiple source,
 along with සිංහල, தமிழ் and English translations.
 
 For example, this is what news published in தமிழ் looks like in සිංහල, and vice versa.
 
-#NewsLKApp #SriLanka
 
 ...
 
-3/ For now, #NewsLKApp pulls data from:
+4/ #NewsLKApp pulls data from:
 
 @AdaDerana
 Ada.Lk
@@ -42,13 +53,17 @@ Island.Lk
 
 ...
 
-3a/ This is just an initial list. Let me know what other sources you'd like me to add to #NewsLKApp.
+5/ The above is very much an initial list.
+Let me know what other sources  you'd like me to add to #NewsLKApp.
 
-#SriLanka
+(There is a ~10 minute delay
+between publishing and turning up on #NewsAppLK)
+
+ #SriLanka
 
 ...
 
-4/ The react app is at
+6/ The react app is at
 http://github.com/nuuuwan/news_lk_app
 
 The data and scraping logic is at
@@ -58,8 +73,11 @@ Feel free to fork, comment, & report issues.
 
 ...
 
-5/ As always, comments, concerns and suggestions are very welcome.
+7/ As always, comments, concerns & suggestions
+are very welcome.
 
 Now go forth and read some news!
+(Hopefully some published in a language
+you don't usually read)
 
 #NewsLKApp #SriLanka
