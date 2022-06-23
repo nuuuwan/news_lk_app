@@ -2,7 +2,7 @@ import TimeX from "../../nonview/base/TimeX";
 import { JSONWWW } from "../../nonview/base/WWW";
 import { URL_DATA } from "../../nonview/constants/Data";
 
-import IDX from "../../nonview/base/IDX"
+import IDX from "../../nonview/base/IDX";
 const URL_RAW_ARTICLES = URL_DATA + "/articles.summary.latest.json";
 const FILE_NAME_PREFIX = "/tmp/news_lk2/articles/";
 
@@ -46,12 +46,13 @@ export default class ArticleSummary {
       return ArticleSummary.fromDict(d);
     });
 
-    const dedupedArticleSummaryList = Object.values(IDX.build(
-      articleSummaryList,
-      x => x.title,
-      x => x,
-    ));
+    const dedupedArticleSummaryList = Object.values(
+      IDX.build(
+        articleSummaryList,
+        (x) => x.title,
+        (x) => x
+      )
+    );
     return dedupedArticleSummaryList;
-
   }
 }
