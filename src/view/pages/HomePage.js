@@ -8,8 +8,10 @@ import { TimeX } from "@nuuuwan/utils-js-dev";
 
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
+import URLContext from "../../nonview/base/URLContext"
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
+import I18N from "../../nonview/base/I18N"
 
 const STYLE = {
   margin: 2,
@@ -22,7 +24,22 @@ const MAX_ARTICLES_TO_DISPLAY = 100;
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
-    this.state = { articleSummaryList: null };
+    const context = this.getContext();
+    this.state = { articleSummaryList: null, timeLatestRefresh: null };
+    this.setContext(context);
+  }
+
+  getContext() {
+    let context = URLContext.getContext();
+    if (!context.lang) {
+      context.lang = I18N.getLang();
+    }
+    return context;
+  }
+
+  setContext(context) {
+    URLContext.setContext(context);
+    I18N.setLang(context.lang);
   }
 
   async refreshData() {
