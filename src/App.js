@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import SriLankaColors from "./view/_constants/SriLankaColors";
 import HomePage from "./view/pages/HomePage.js";
 
 const THEME = createTheme({
@@ -13,9 +12,6 @@ const THEME = createTheme({
     },
     secondary: {
       main: "#f80",
-    },
-    success : {
-      main: "#080",
     }
   },
   typography: {
