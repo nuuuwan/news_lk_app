@@ -13,7 +13,7 @@ import { t } from "../../nonview/base/I18N";
 const MENU_ITEM_LIST = [
   {
     name: "Code - React App",
-    url: "http://github.com/nuuuwan/news_lk2_app",
+    url: "http://github.com/nuuuwan/news_lk_app",
     Icon: GitHubIcon,
   },
   {
