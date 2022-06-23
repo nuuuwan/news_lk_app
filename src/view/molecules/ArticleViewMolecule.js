@@ -4,7 +4,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
-import I18N, { t, LANG_IDX } from "../../nonview/base/I18N";
+import I18N, { t, LANG_IDX, BASE_LANG } from "../../nonview/base/I18N";
 
 import Condition from "../../view/atoms/Condition";
 import DotSeparator from "../../view/molecules/DotSeparator";
@@ -21,17 +21,23 @@ export default function ArticleViewMolecule({
 
   const isArticleNotNull = translatedArticle !== null;
 
-  let title, bodyLines, originalLang;
+  let title = articleSummary.title;
+  let bodyLines = [];
+  let originalLang = BASE_LANG;
+
   if (translatedArticle) {
     originalLang = translatedArticle.originalLang;
-
     const sourceLang = I18N.getLang();
-    const translation = translatedArticle.translate[sourceLang];
-    title = translation.title;
-    bodyLines = translation.bodyLines;
-  } else {
-    title = articleSummary.title;
-    bodyLines = [];
+    if (originalLang === sourceLang) {
+      title = translatedArticle.title;
+      bodyLines = translatedArticle.bodyLines;
+    } else {
+      const translation = translatedArticle.translate[sourceLang];
+      if (translation) {
+        title = translation.title;
+        bodyLines = translation.bodyLines;
+      }
+    }
   }
 
   let langLabel = "";
