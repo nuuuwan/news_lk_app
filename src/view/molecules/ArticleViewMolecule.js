@@ -37,6 +37,10 @@ export default function ArticleViewMolecule({
         title = translation.title;
         bodyLines = translation.bodyLines;
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fec9bb7cbac77fc794224a0261dce494c7040454
     }
   }
 
