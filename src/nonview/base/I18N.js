@@ -3,6 +3,7 @@ import IDX from "../../nonview/base/IDX";
 
 export const BASE_LANG = "en";
 const CACHE_KEY_LANG = "CACHE_KEY_LANG";
+const REPLACE_WILDCARD = "000";
 
 class Lang {
   constructor(lang, label, labelEn, shortLabel, color) {
@@ -65,9 +66,10 @@ export default class I18N {
   }
 }
 
-export function t(s, skip = false) {
-  if (skip) {
-    return s;
+export function t(s, value = "") {
+  let translatedS = I18N.translate(s);
+  if (value) {
+    return translatedS.replaceAll(REPLACE_WILDCARD, value);
   }
-  return I18N.translate(s);
+  return translatedS;
 }
