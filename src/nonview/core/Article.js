@@ -1,5 +1,5 @@
 import Cache from "../../nonview/base/Cache";
-import WWW from "../../nonview/base/WWW";
+import { JSONWWW } from "../../nonview/base/WWW";
 import { URL_DATA } from "../../nonview/constants/Data";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
@@ -8,9 +8,10 @@ const MAX_WORDS_BODY_LINES_LIMITED = 100;
 const READING_SPEED_WPM = 200;
 
 export default class Article extends ArticleSummary {
-  constructor(newspaperID, url, timeUT, title, bodyLines) {
-    super(newspaperID, url, timeUT, title, null);
+  constructor(newspaperID, url, timeUT, title, bodyLines, originalLang) {
+    super(newspaperID, url, timeUT, title, null, null);
     this.bodyLines = bodyLines;
+    this.originalLang = originalLang;
   }
 
   get bodyLinesLimited() {
@@ -50,13 +51,15 @@ export default class Article extends ArticleSummary {
       d["url"],
       parseInt(d["time_ut"]),
       d["title"],
-      d["body_lines"]
+      d["body_lines"],
+      d["original_lang"]
     );
   }
 
   static async loadRawArticle(fileName) {
     const urlArticle = [URL_ARTICLES, fileName].join("/");
-    return await WWW.jsonNonCache(urlArticle);
+    const jsonWWW = new JSONWWW(urlArticle);
+    return await jsonWWW.readCache();
   }
 
   static async loadArticle(fileName) {
