@@ -61,7 +61,7 @@ export default function ArticleViewMolecule({
 
         <Condition condition={!isInOriginalLang}>
           <Typography
-            variant="caption"
+            variant="subtitle2"
             color={originalLangObj.color}
             sx={{ opacity: 0.33 }}
           >
