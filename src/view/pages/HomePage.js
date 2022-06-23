@@ -8,10 +8,10 @@ import { TimeX } from "@nuuuwan/utils-js-dev";
 
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
-import URLContext from "../../nonview/base/URLContext"
+import URLContext from "../../nonview/base/URLContext";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
-import I18N from "../../nonview/base/I18N"
+import I18N from "../../nonview/base/I18N";
 
 const STYLE = {
   margin: 2,

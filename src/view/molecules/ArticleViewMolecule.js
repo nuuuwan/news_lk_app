@@ -4,7 +4,7 @@ import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
-import {t} from "../../nonview/base/I18N"
+import { t } from "../../nonview/base/I18N";
 import Condition from "../../view/atoms/Condition";
 import DotSeparator from "../../view/molecules/DotSeparator";
 import LimitWords from "../../view/molecules/LimitWords";
