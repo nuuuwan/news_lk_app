@@ -1,9 +1,11 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
+
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import RefreshIcon from "@mui/icons-material/Refresh";
+
 import { LANG_LIST } from "../../nonview/base/I18N";
 
 export default function HomePageBottomNavigation({
