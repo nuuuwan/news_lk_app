@@ -30,7 +30,11 @@ export default function HomePageBottomNavigation({
           return (
             <BottomNavigationAction
               key={"button-lang-" + lang.lang}
-              label={<Typography variant="h6">{lang.shortLabel}</Typography>}
+              label={
+                <Typography variant="h6" color={lang.color}>
+                  {lang.shortLabel}
+                </Typography>
+              }
               onClick={onClickInner}
             />
           );
