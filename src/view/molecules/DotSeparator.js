@@ -6,9 +6,11 @@ export default function DotSeparator({ children, separator, sx }) {
   separator = separator ? separator : DEFAULT_SEPARATOR;
 
   let displayChildren = [];
-  for (let iChild in children) {
-    const child = children[iChild];
-    if (iChild > 0) {
+  for (let child of children) {
+    if (!child) {
+      continue;
+    }
+    if (displayChildren.length > 0) {
       displayChildren.push(<span>{separator}</span>);
     }
     displayChildren.push(child);
