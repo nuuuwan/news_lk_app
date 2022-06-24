@@ -9,7 +9,8 @@ import Condition from "../../view/atoms/Condition";
 import DotSeparator from "../../view/molecules/DotSeparator";
 import LimitWords from "../../view/molecules/LimitWords";
 
-export default function ArticleViewMolecule({ articleSummary, article }) {
+export default function ArticleViewMolecule({ article }) {
+  console.debug(article);
   const currentLang = I18N.getLang();
   let originalLang = article.originalLang;
 
@@ -22,7 +23,7 @@ export default function ArticleViewMolecule({ articleSummary, article }) {
   return (
     <Box>
       <Link
-        href={articleSummary.url}
+        href={article.url}
         target="_blank"
         sx={{ textDecoration: "none" }}
       >
@@ -32,11 +33,11 @@ export default function ArticleViewMolecule({ articleSummary, article }) {
 
         <DotSeparator sx={{ color: "secondary" }}>
           <Typography variant="caption" color="secondary">
-            {articleSummary.urlShort}
+            {article.urlShort}
           </Typography>
 
           <Typography variant="caption" color="secondary">
-            {articleSummary.timeStrHumanized}
+            {article.timeStrHumanized}
           </Typography>
         </DotSeparator>
 
