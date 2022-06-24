@@ -5,9 +5,10 @@ import Typography from "@mui/material/Typography";
 
 import I18N, { t, LANG_IDX } from "../../nonview/base/I18N";
 
+import AlignCenter from "../../view/atoms/AlignCenter";
 import Condition from "../../view/atoms/Condition";
 import HighlightEnts from "../../view/atoms/HighlightEnts";
-import DotSeparator from "../../view/molecules/DotSeparator";
+import MiddleDot from "../../view/atoms/MiddleDot";
 import LimitWords from "../../view/molecules/LimitWords";
 
 export default function ArticleViewMolecule({ article }) {
@@ -17,6 +18,7 @@ export default function ArticleViewMolecule({ article }) {
   const text = article.textIDX[currentLang];
   const title = text.title;
   const bodyLines = text.bodyLines;
+  const author = text.author;
 
   const titleEnts = text.titleEnts;
   const bodyLineEntsList = text.bodyLineEntsList;
@@ -31,15 +33,23 @@ export default function ArticleViewMolecule({ article }) {
           <HighlightEnts text={title} ents={titleEnts} />
         </Typography>
 
-        <DotSeparator sx={{ color: "secondary" }}>
+        <AlignCenter>
           <Typography variant="caption" color="secondary">
             {article.urlShort}
           </Typography>
 
+          <Condition condition={author}>
+            <MiddleDot />
+            <Typography variant="caption" color="secondary">
+              {author}
+            </Typography>
+          </Condition>
+
+          <MiddleDot />
           <Typography variant="caption" color="secondary">
             {article.timeStrHumanized}
           </Typography>
-        </DotSeparator>
+        </AlignCenter>
 
         <Condition condition={!isInOriginalLang}>
           <Typography
