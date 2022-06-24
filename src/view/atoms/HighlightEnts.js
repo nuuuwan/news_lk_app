@@ -28,17 +28,16 @@ function getAnnotatedPairs(text, ents) {
 }
 
 const STYLE_REGULAR = {
-  opacity: 0.8,
+  opacity: 0.6,
 };
 
 const STYLE_ENT_THING = {
   fontWeight: "bold",
-  fontStyle: "italic",
-
 };
 
 const STYLE_ENT_NUMBER = {
   fontWeight: "bold",
+  opacity: 0.8,
 
 };
 
