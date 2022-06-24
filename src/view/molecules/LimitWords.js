@@ -5,10 +5,10 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AlignRight from "../../view/atoms/AlignRight";
 
 import { t } from "../../nonview/base/I18N";
 
+import AlignRight from "../../view/atoms/AlignRight";
 import Condition from "../../view/atoms/Condition";
 import MultiLines from "../../view/molecules/MultiLines";
 
