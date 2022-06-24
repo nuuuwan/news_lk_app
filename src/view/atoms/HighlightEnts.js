@@ -1,3 +1,7 @@
+import Link from "@mui/material/Link";
+
+const GOOGLE_SEARCH_PREFIX = "https://www.google.com/search?q=";
+
 function getAnnotatedPairs(text, ents) {
   let i = 0;
   let parts = [];
@@ -40,6 +44,11 @@ const STYLE_ENT_NUMBER = {
   opacity: 0.8,
 };
 
+const STYLE_LINK = {
+  textDecoration: "none",
+  color: "inherit",
+};
+
 export default function HighlightEnts({ text, ents }) {
   if (!ents) {
     return text;
@@ -49,10 +58,16 @@ export default function HighlightEnts({ text, ents }) {
   return (
     <>
       {annotatedPairs.map(function ([text, entLabel], iItem) {
-        let style;
         if (entLabel === false) {
-          style = STYLE_REGULAR;
-        } else if (
+          return (
+            <span key={"item-" + iItem} style={STYLE_REGULAR}>
+              {text}
+            </span>
+          );
+        }
+
+        let style;
+        if (
           [
             "CARDINAL",
             "DATE",
@@ -82,10 +97,14 @@ export default function HighlightEnts({ text, ents }) {
           style = STYLE_ENT_THING;
         }
 
+        const href = GOOGLE_SEARCH_PREFIX + encodeURIComponent(text);
+
         return (
-          <span key={"item-" + iItem} style={style}>
-            {text}
-          </span>
+          <Link href={href} style={STYLE_LINK} target="_blank">
+            <span key={"item-" + iItem} style={style}>
+              {text}
+            </span>
+          </Link>
         );
       })}
     </>
