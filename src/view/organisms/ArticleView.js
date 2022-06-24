@@ -19,13 +19,10 @@ export default class ArticleView extends Component {
   }
 
   render() {
-    const { articleSummary } = this.props;
     const { article } = this.state;
     if (!article) {
       return null;
     }
-    return (
-      <ArticleViewMolecule article={article} />
-    );
+    return <ArticleViewMolecule article={article} />;
   }
 }
