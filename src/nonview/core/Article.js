@@ -24,6 +24,8 @@ export default class Article extends ArticleSummary {
         text_idx[lang] = {
           title: values["title"],
           bodyLines: values["body_lines"],
+          titleEnts: values["title_ents"],
+          bodyLineEntsList: values["body_line_ents_list"],
         };
         return text_idx;
       },
