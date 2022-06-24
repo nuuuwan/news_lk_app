@@ -10,9 +10,12 @@ import I18N, { LANG_LIST } from "../../nonview/base/I18N";
 
 export default function HomePageBottomNavigation({
   timeLatestRefresh,
-  onClickRefresh,
   onSelectLanguage,
 }) {
+  const onClickRefresh = function () {
+    window.location.reload(true);
+  };
+
   return (
     <Paper
       sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}

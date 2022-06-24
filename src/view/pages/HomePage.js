@@ -4,8 +4,6 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
 
-import { TimeX } from "@nuuuwan/utils-js-dev";
-
 import I18N from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
@@ -31,7 +29,6 @@ export default class HomePage extends Component {
     this.state = {
       context,
       articleSummaryList: null,
-      timeLatestRefresh: null,
     };
     this.isComponentMounted = false;
     this.setContext(context);
@@ -57,12 +54,9 @@ export default class HomePage extends Component {
   }
 
   async refreshData() {
-    localStorage.clear();
     const articleSummaryList = await ArticleSummary.loadArticleSummaryList();
-    const timeLatestRefresh = TimeX.getUnixTime();
     this.setState({
       articleSummaryList,
-      timeLatestRefresh,
     });
   }
 
@@ -80,7 +74,7 @@ export default class HomePage extends Component {
   }
 
   render() {
-    const { articleSummaryList, timeLatestRefresh } = this.state;
+    const { articleSummaryList } = this.state;
     if (!articleSummaryList || articleSummaryList.length === 0) {
       return <CircularProgress />;
     }
@@ -92,7 +86,7 @@ export default class HomePage extends Component {
     return (
       <Box sx={STYLE}>
         <CustomAppBar />
-        <Stack key={"articles-" + timeLatestRefresh} spacing={2}>
+        <Stack spacing={2}>
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
             return (
@@ -104,8 +98,6 @@ export default class HomePage extends Component {
           })}
         </Stack>
         <HomePageBottomNavigation
-          timeLatestRefresh={timeLatestRefresh}
-          onClickRefresh={this.onClickRefresh.bind(this)}
           onSelectLanguage={this.onSelectLanguage.bind(this)}
         />
       </Box>
