@@ -11,7 +11,7 @@ import { t } from "../../nonview/base/I18N";
 import Condition from "../../view/atoms/Condition";
 import MultiLines from "../../view/molecules/MultiLines";
 
-export default function LimitWords({ lines, wordLimit }) {
+export default function LimitWords({ lines, entsList, wordLimit }) {
   if (!lines) {
     lines = [];
   }
@@ -38,9 +38,19 @@ export default function LimitWords({ lines, wordLimit }) {
     setShow(false);
   };
 
+  let mandatoryEntsList, optionalEntsList;
+  if (entsList) {
+    mandatoryEntsList = entsList.slice(0, mandatoryLines.length);
+    optionalEntsList = entsList.slice(mandatoryLines.length);
+  }
+
   return (
     <Box>
-      <MultiLines lines={mandatoryLines} color="black" />
+      <MultiLines
+        lines={mandatoryLines}
+        entsList={mandatoryEntsList}
+        color="black"
+      />
       <Condition condition={!show && optionalLines.length > 0}>
         <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
           <ExpandMoreIcon />
@@ -49,7 +59,11 @@ export default function LimitWords({ lines, wordLimit }) {
       </Condition>
 
       <Condition condition={show && mandatoryLines.length > 0}>
-        <MultiLines lines={optionalLines} color="gray" />
+        <MultiLines
+          lines={optionalLines}
+          ents={optionalEntsList}
+          color="gray"
+        />
         <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
           <ExpandLessIcon />
           <Typography variant="caption">{t("Read less")}</Typography>

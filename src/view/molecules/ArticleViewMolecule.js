@@ -6,29 +6,29 @@ import Typography from "@mui/material/Typography";
 import I18N, { t, LANG_IDX } from "../../nonview/base/I18N";
 
 import Condition from "../../view/atoms/Condition";
+import HighlightEnts from "../../view/atoms/HighlightEnts";
 import DotSeparator from "../../view/molecules/DotSeparator";
 import LimitWords from "../../view/molecules/LimitWords";
 
 export default function ArticleViewMolecule({ article }) {
-  console.debug(article);
   const currentLang = I18N.getLang();
   let originalLang = article.originalLang;
 
   const text = article.textIDX[currentLang];
   const title = text.title;
   const bodyLines = text.bodyLines;
+
+  const titleEnts = text.titleEnts;
+  const bodyLineEntsList = text.bodyLineEntsList;
+
   const isInOriginalLang = originalLang === currentLang;
 
   const originalLangObj = LANG_IDX[originalLang];
   return (
     <Box>
-      <Link
-        href={article.url}
-        target="_blank"
-        sx={{ textDecoration: "none" }}
-      >
+      <Link href={article.url} target="_blank" sx={{ textDecoration: "none" }}>
         <Typography variant="h5" color={originalLangObj.color}>
-          {title}
+          <HighlightEnts text={title} ents={titleEnts} />
         </Typography>
 
         <DotSeparator sx={{ color: "secondary" }}>
@@ -52,7 +52,11 @@ export default function ArticleViewMolecule({ article }) {
         </Condition>
       </Link>
 
-      <LimitWords lines={bodyLines} wordLimit={50} />
+      <LimitWords
+        lines={bodyLines}
+        entsList={bodyLineEntsList}
+        wordLimit={50}
+      />
 
       <Condition condition={!article}>
         <Alert severity="warning">
