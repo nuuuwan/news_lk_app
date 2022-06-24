@@ -16,8 +16,6 @@ export default function MultiLines({ lines, entsList, color }) {
               marginBottom: 2,
               marginTop: 1,
               color: color,
-              textAlign: "justify",
-              textJustify: "inter-character",
             }}
           >
             <HighlightEnts text={line} ents={ents} />
