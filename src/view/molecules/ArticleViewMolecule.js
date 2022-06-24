@@ -53,9 +53,9 @@ export default function ArticleViewMolecule({
 
         <Condition condition={!isInOriginalLang}>
           <Typography
-            variant="subtitle2"
+            variant="subtitle1"
             color={originalLangObj.color}
-            sx={{ opacity: 0.33 }}
+            sx={{ opacity: 0.5 }}
           >
             {t("Translated from the 000 Language", t(originalLangObj.labelEn))}
           </Typography>
