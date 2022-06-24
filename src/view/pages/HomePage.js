@@ -57,6 +57,7 @@ export default class HomePage extends Component {
   }
 
   async refreshData() {
+    localStorage.clear();
     const articleSummaryList = await ArticleSummary.loadArticleSummaryList();
     const timeLatestRefresh = TimeX.getUnixTime();
     this.setState({
