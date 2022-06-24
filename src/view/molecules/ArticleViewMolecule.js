@@ -9,26 +9,15 @@ import Condition from "../../view/atoms/Condition";
 import DotSeparator from "../../view/molecules/DotSeparator";
 import LimitWords from "../../view/molecules/LimitWords";
 
-export default function ArticleViewMolecule({
-  articleSummary,
-  article,
-}) {
+export default function ArticleViewMolecule({ articleSummary, article }) {
   const currentLang = I18N.getLang();
-
-  let title = articleSummary.title;
-  let bodyLines = [];
   let originalLang = article.originalLang;
 
-  if (article && article.translate) {
-    const translation = article.translate[currentLang];
-    title = translation.title;
-    bodyLines = translation.bodyLines;
-  } else {
-    title = articleSummary.title;
-    bodyLines = [];
-  }
-
+  const text = article.textIDX[currentLang];
+  const title = text.title;
+  const bodyLines = text.bodyLines;
   const isInOriginalLang = originalLang === currentLang;
+
   const originalLangObj = LANG_IDX[originalLang];
   return (
     <Box>
