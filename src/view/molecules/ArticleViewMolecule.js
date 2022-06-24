@@ -12,7 +12,6 @@ import LimitWords from "../../view/molecules/LimitWords";
 export default function ArticleViewMolecule({
   articleSummary,
   article,
-  translatedArticle,
 }) {
   const currentLang = I18N.getLang();
 
@@ -20,17 +19,10 @@ export default function ArticleViewMolecule({
   let bodyLines = [];
   let originalLang = article.originalLang;
 
-  if (
-    translatedArticle &&
-    originalLang !== currentLang &&
-    translatedArticle.translate[currentLang]
-  ) {
-    const translation = translatedArticle.translate[currentLang];
+  if (article && article.translate) {
+    const translation = article.translate[currentLang];
     title = translation.title;
     bodyLines = translation.bodyLines;
-  } else if (article) {
-    title = article.title;
-    bodyLines = article.bodyLines;
   } else {
     title = articleSummary.title;
     bodyLines = [];
@@ -72,7 +64,7 @@ export default function ArticleViewMolecule({
 
       <LimitWords lines={bodyLines} wordLimit={50} />
 
-      <Condition condition={!translatedArticle}>
+      <Condition condition={!article}>
         <Alert severity="warning">
           {t("This article is yet to be translated. Try again later.")}
         </Alert>
