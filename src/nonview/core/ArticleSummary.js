@@ -7,13 +7,12 @@ const URL_RAW_ARTICLES = URL_DATA + "/articles.summary.latest.json";
 const FILE_NAME_PREFIX = "/tmp/news_lk2/articles/";
 
 export default class ArticleSummary {
-  constructor(newspaperID, url, timeUT, title, fileName, isTranslated) {
+  constructor(newspaperID, url, timeUT, title, fileName) {
     this.newspaperID = newspaperID;
     this.url = url;
     this.timeUT = timeUT;
     this.title = title;
     this.fileName = fileName;
-    this.isTranslated = isTranslated;
   }
 
   get timeStrHumanized() {
@@ -34,8 +33,7 @@ export default class ArticleSummary {
       d["url"],
       parseInt(d["time_ut"]),
       d["title"],
-      d["file_name"].replace(FILE_NAME_PREFIX, ""),
-      d["is_translated"]
+      d["file_name"].replace(FILE_NAME_PREFIX, "")
     );
   }
 
