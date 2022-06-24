@@ -1,26 +1,23 @@
-import Stack from "@mui/material/Stack";
+import AlignCenter from "../../view/atoms/AlignCenter";
+import MiddleDot from "../../view/atoms/MiddleDot";
 
-const DEFAULT_SEPARATOR = " · ";
-
-export default function DotSeparator({ children, separator, sx }) {
-  separator = separator ? separator : DEFAULT_SEPARATOR;
-
+export default function DotSeparator({ children, sx }) {
   let displayChildren = [];
   for (let child of children) {
     if (!child) {
       continue;
     }
     if (displayChildren.length > 0) {
-      displayChildren.push(<span>{separator}</span>);
+      displayChildren.push(<MiddleDot />);
     }
     displayChildren.push(child);
   }
 
   return (
-    <Stack direction="row" spacing={0.5} alignItems="center" sx={sx}>
+    <AlignCenter>
       {displayChildren.map(function (child, iChild) {
         return <span key={"child-" + iChild}>{child}</span>;
       })}
-    </Stack>
+    </AlignCenter>
   );
 }
