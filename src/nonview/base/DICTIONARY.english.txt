@@ -16,6 +16,7 @@
 000 weeks
 Code - Data
 Code - React App
+Copy App Link
 English
 Help (Twitter)
 Just now
