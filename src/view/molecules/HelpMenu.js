@@ -8,6 +8,9 @@ import MenuItem from "@mui/material/MenuItem";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SettingsIcon from "@mui/icons-material/Settings";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import URLContext from "../../nonview/base/URLContext";
+
 
 import { t } from "../../nonview/base/I18N";
 
@@ -41,6 +44,11 @@ export default function HelpMenu() {
     setAnchorEl(null);
   };
 
+  const onClickCopy = function () {
+    navigator.clipboard.writeText(URLContext.getURL());
+  };
+
+
   return (
     <div>
       <IconButton onClick={onClick}>
@@ -72,6 +80,12 @@ export default function HelpMenu() {
             </MenuItem>
           );
         })}
+        <MenuItem onClick={onClickCopy}>
+          <ListItemIcon>
+            <ContentCopyIcon />
+          </ListItemIcon>
+          <ListItemText>{t("Copy App Link")}</ListItemText>
+        </MenuItem>
       </Menu>
     </div>
   );
