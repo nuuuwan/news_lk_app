@@ -24,7 +24,13 @@ export default class ArticleSummary {
   }
 
   get urlShort() {
-    return this.url.split("/").splice(0, 3).join("/");
+    return this.url
+      .split("/")
+      .splice(0, 3)
+      .join("/")
+      .replace("https://", "")
+      .replace("http://", "")
+      .replace("www.", "");
   }
 
   static fromDict(d) {
