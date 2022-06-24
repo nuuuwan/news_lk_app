@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AlignRight from "../../view/atoms/AlignRight";
 
 import { t } from "../../nonview/base/I18N";
 
@@ -52,10 +53,12 @@ export default function LimitWords({ lines, entsList, wordLimit }) {
         color="black"
       />
       <Condition condition={!show && optionalLines.length > 0}>
-        <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
-          <ExpandMoreIcon />
-          <Typography variant="caption">{t("Read more")}</Typography>
-        </IconButton>
+        <AlignRight>
+          <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
+            <ExpandMoreIcon />
+            <Typography variant="caption">{t("Read more")}</Typography>
+          </IconButton>
+        </AlignRight>
       </Condition>
 
       <Condition condition={show && mandatoryLines.length > 0}>
@@ -64,10 +67,12 @@ export default function LimitWords({ lines, entsList, wordLimit }) {
           entsList={optionalEntsList}
           color="gray"
         />
-        <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
-          <ExpandLessIcon />
-          <Typography variant="caption">{t("Read less")}</Typography>
-        </IconButton>
+        <AlignRight>
+          <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
+            <ExpandLessIcon />
+            <Typography variant="caption">{t("Read less")}</Typography>
+          </IconButton>
+        </AlignRight>
       </Condition>
     </Box>
   );
