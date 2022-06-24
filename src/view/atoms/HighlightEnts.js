@@ -38,7 +38,6 @@ const STYLE_ENT_THING = {
 const STYLE_ENT_NUMBER = {
   fontWeight: "bold",
   opacity: 0.8,
-
 };
 
 export default function HighlightEnts({ text, ents }) {
