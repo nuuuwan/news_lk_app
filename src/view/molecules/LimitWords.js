@@ -61,7 +61,7 @@ export default function LimitWords({ lines, entsList, wordLimit }) {
       <Condition condition={show && mandatoryLines.length > 0}>
         <MultiLines
           lines={optionalLines}
-          ents={optionalEntsList}
+          entsList={optionalEntsList}
           color="gray"
         />
         <IconButton onClick={onClickShowLess} sx={{ color: "lightgray" }}>
