@@ -72,6 +72,7 @@ export default function HighlightEnts({ text, ents }) {
             "NORP",
             "ORG",
             "PERSON",
+            "PRODUCT",
             "WORK_OF_ART",
           ].includes(entLabel)
         ) {
