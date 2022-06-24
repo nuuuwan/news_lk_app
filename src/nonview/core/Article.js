@@ -8,25 +8,24 @@ const MAX_WORDS_BODY_LINES_LIMITED = 100;
 const READING_SPEED_WPM = 200;
 
 export default class Article extends ArticleSummary {
-  constructor(newspaperID, url, timeUT, title, bodyLines, originalLang, translate) {
+  constructor(newspaperID, url, timeUT, title, originalLang, textIDX) {
     super(newspaperID, url, timeUT, title, null, null);
-    this.bodyLines = bodyLines;
     this.originalLang = originalLang;
-    this.translate = translate;
+    this.textIDX = textIDX;
   }
 
   static fromDict(d) {
-    let translate;
-    if (d["translate"]) {
-      translate = Object.entries(d["translate"]).reduce(function (
-        translate,
+    let text_idx;
+    if (d["text_idx"]) {
+      text_idx = Object.entries(d["text_idx"]).reduce(function (
+        text_idx,
         [lang, values]
       ) {
-        translate[lang] = {
+        text_idx[lang] = {
           title: values["title"],
           bodyLines: values["body_lines"],
         };
-        return translate;
+        return text_idx;
       },
       {});
     }
@@ -34,10 +33,10 @@ export default class Article extends ArticleSummary {
       d["newspaper_id"],
       d["url"],
       parseInt(d["time_ut"]),
+
       d["title"],
-      d["body_lines"],
       d["original_lang"],
-      translate
+      text_idx
     );
   }
 
@@ -72,7 +71,15 @@ export default class Article extends ArticleSummary {
     return Math.ceil(this.wordCount / READING_SPEED_WPM);
   }
 
-
+  static isCompatible(d) {
+    if (!d["original_lang"]) {
+      return false;
+    }
+    if (!d["text_idx"]) {
+      return false;
+    }
+    return true;
+  }
 
   static async loadRawArticle(fileName) {
     const urlArticle = [URL_ARTICLES, fileName].join("/");
@@ -85,6 +92,11 @@ export default class Article extends ArticleSummary {
     const rawArticle = await cache.get(async function () {
       return await Article.loadRawArticle(fileName);
     });
+
+    if (!Article.isCompatible(rawArticle)) {
+      return null;
+    }
+
     return Article.fromDict(rawArticle);
   }
 }
