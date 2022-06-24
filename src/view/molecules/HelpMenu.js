@@ -5,14 +5,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SettingsIcon from "@mui/icons-material/Settings";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import URLContext from "../../nonview/base/URLContext";
-
 
 import { t } from "../../nonview/base/I18N";
+import URLContext from "../../nonview/base/URLContext";
 
 const MENU_ITEM_LIST = [
   {
@@ -47,7 +46,6 @@ export default function HelpMenu() {
   const onClickCopy = function () {
     navigator.clipboard.writeText(URLContext.getURL());
   };
-
 
   return (
     <div>
