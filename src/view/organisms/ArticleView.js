@@ -25,7 +25,7 @@ export default class ArticleView extends Component {
       return null;
     }
     return (
-      <ArticleViewMolecule articleSummary={articleSummary} article={article} />
+      <ArticleViewMolecule article={article} />
     );
   }
 }
