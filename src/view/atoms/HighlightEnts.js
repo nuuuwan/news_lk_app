@@ -27,14 +27,19 @@ function getAnnotatedPairs(text, ents) {
   return parts;
 }
 
-const STYLE_REGULAR = {};
+const STYLE_REGULAR = {
+  opacity: 0.8,
+};
 
 const STYLE_ENT_THING = {
-  color: "blue",
+  fontWeight: "bold",
+  fontStyle: "italic",
+
 };
 
 const STYLE_ENT_NUMBER = {
-  color: "purple",
+  fontWeight: "bold",
+
 };
 
 export default function HighlightEnts({ text, ents }) {
@@ -75,7 +80,7 @@ export default function HighlightEnts({ text, ents }) {
           style = STYLE_ENT_THING;
         } else {
           console.debug(entLabel, text);
-          style = STYLE_REGULAR;
+          style = STYLE_ENT_THING;
         }
 
         return (
