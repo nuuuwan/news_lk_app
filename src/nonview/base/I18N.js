@@ -61,7 +61,6 @@ export default class I18N {
       return s;
     }
 
-
     const translation = entry[currentLang];
     if (!translation) {
       console.warn(`[I18N] ${s}`);
