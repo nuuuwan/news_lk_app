@@ -8,9 +8,8 @@ const MAX_WORDS_BODY_LINES_LIMITED = 100;
 const READING_SPEED_WPM = 200;
 
 export default class Article extends ArticleSummary {
-  constructor(newspaperID, url, timeUT, title, originalLang, textIDX) {
-    super(newspaperID, url, timeUT, title, null, null);
-    this.originalLang = originalLang;
+  constructor(newspaperID, url, timeUT, originalLang, originalTitle, textIDX) {
+    super(newspaperID, url, timeUT, originalLang, originalTitle, null);
     this.textIDX = textIDX;
   }
 
@@ -36,8 +35,8 @@ export default class Article extends ArticleSummary {
       d["url"],
       parseInt(d["time_ut"]),
 
-      d["title"],
       d["original_lang"],
+      d["origina_title"],
       text_idx
     );
   }
