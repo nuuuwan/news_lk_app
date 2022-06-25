@@ -55,58 +55,54 @@ export default function HighlightEnts({ text, ents }) {
   }
 
   const annotatedPairs = getAnnotatedPairs(text, ents);
-  return (
-    <>
-      {annotatedPairs.map(function ([text, entLabel], iItem) {
-        if (entLabel === false) {
-          return (
-            <span key={"item-" + iItem} style={STYLE_REGULAR}>
-              {text}
-            </span>
-          );
-        }
+  return annotatedPairs.map(function ([text, entLabel], iItem) {
+    const key = "item-" + iItem + text;
+    if (entLabel === false) {
+      return (
+        <span key={key} style={STYLE_REGULAR}>
+          {text}
+        </span>
+      );
+    }
 
-        let style;
-        if (
-          [
-            "CARDINAL",
-            "DATE",
-            "MONEY",
-            "ORDINAL",
-            "PERCENT",
-            "QUANTITY",
-            "TIME",
-          ].includes(entLabel)
-        ) {
-          style = STYLE_ENT_NUMBER;
-        } else if (
-          [
-            "FAC",
-            "GPE",
-            "LOC",
-            "NORP",
-            "ORG",
-            "PERSON",
-            "PRODUCT",
-            "WORK_OF_ART",
-          ].includes(entLabel)
-        ) {
-          style = STYLE_ENT_THING;
-        } else {
-          console.debug(entLabel, text);
-          style = STYLE_ENT_THING;
-        }
+    let style;
+    if (
+      [
+        "CARDINAL",
+        "DATE",
+        "MONEY",
+        "ORDINAL",
+        "PERCENT",
+        "QUANTITY",
+        "TIME",
+      ].includes(entLabel)
+    ) {
+      style = STYLE_ENT_NUMBER;
+    } else if (
+      [
+        "FAC",
+        "GPE",
+        "LOC",
+        "NORP",
+        "ORG",
+        "PERSON",
+        "PRODUCT",
+        "WORK_OF_ART",
+        "LAW",
+      ].includes(entLabel)
+    ) {
+      style = STYLE_ENT_THING;
+    } else {
+      console.debug(entLabel, text);
+      style = STYLE_ENT_THING;
+    }
 
-        const href = GOOGLE_SEARCH_PREFIX + encodeURIComponent(text);
+    const href = GOOGLE_SEARCH_PREFIX + encodeURIComponent(text);
 
-        return (
-          <Link href={href} style={STYLE_LINK} target="_blank">
-            <span key={"item-" + iItem} style={style}>
-              {text}
-            </span>
-          </Link>
-        );
-      })}
-    </>
-  );
+    return (
+      <Link key={key} href={href} style={STYLE_LINK} target="_blank">
+        <span style={style}>{text}</span>
+      </Link>
+    );
+  });
 }
