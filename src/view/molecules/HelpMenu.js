@@ -5,6 +5,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -47,6 +48,11 @@ export default function HelpMenu() {
     navigator.clipboard.writeText(URLContext.getURL());
   };
 
+  const onClickClearCache = function () {
+    localStorage.clear();
+    window.location.reload(true);
+  };
+
   return (
     <div>
       <IconButton onClick={onClick}>
@@ -83,6 +89,12 @@ export default function HelpMenu() {
             <ContentCopyIcon />
           </ListItemIcon>
           <ListItemText>{t("Copy App Link")}</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={onClickClearCache}>
+          <ListItemIcon>
+            <AutorenewIcon />
+          </ListItemIcon>
+          <ListItemText>{t("Clear Local Cache")}</ListItemText>
         </MenuItem>
       </Menu>
     </div>
