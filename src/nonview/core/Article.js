@@ -3,7 +3,7 @@ import { JSONWWW } from "../../nonview/base/WWW";
 import { URL_DATA } from "../../nonview/constants/Data";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 
-const URL_ARTICLES = URL_DATA + "/articles.translated";
+const URL_ARTICLES = URL_DATA + "/articles";
 const MAX_WORDS_BODY_LINES_LIMITED = 100;
 const READING_SPEED_WPM = 200;
 
