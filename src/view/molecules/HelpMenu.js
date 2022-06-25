@@ -21,12 +21,12 @@ const MENU_ITEM_LIST = [
     Icon: TwitterIcon,
   },
   {
-    name: "Code - React App",
+    name: "Code Repository - App",
     url: "http://github.com/nuuuwan/news_lk_app",
     Icon: GitHubIcon,
   },
   {
-    name: "Code - Data",
+    name: "Code Repository - Data",
     url: "https://github.com/nuuuwan/news_lk2/tree/data",
     Icon: GitHubIcon,
   },
