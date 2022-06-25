@@ -80,15 +80,16 @@ export default function HighlightEnts({ text, ents }) {
       style = STYLE_ENT_NUMBER;
     } else if (
       [
+        "EVENT",
         "FAC",
         "GPE",
+        "LAW",
         "LOC",
         "NORP",
         "ORG",
         "PERSON",
         "PRODUCT",
         "WORK_OF_ART",
-        "LAW",
       ].includes(entLabel)
     ) {
       style = STYLE_ENT_THING;
