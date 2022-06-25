@@ -1,3 +1,4 @@
+const N_MAX_RETRY = 5;
 export default class Cache {
   constructor(cacheKey) {
     this.cacheKey = cacheKey;
@@ -8,7 +9,15 @@ export default class Cache {
   }
 
   set(item) {
-    localStorage.setItem(this.cacheKey, JSON.stringify(item));
+    for (let i = 0; i < N_MAX_RETRY; i++) {
+      try {
+        localStorage.setItem(this.cacheKey, JSON.stringify(item));
+        return true;
+      } catch {
+        localStorage.clear();
+      }
+    }
+    return false;
   }
 
   getHot() {
