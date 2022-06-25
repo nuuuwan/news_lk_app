@@ -45,16 +45,22 @@ export default class I18N {
     if (!s) {
       return "";
     }
-    const currentLang = I18N.getLang();
     s = s.trim();
-    if (!s || !s.trim() || currentLang === BASE_LANG) {
+    if (!s || !s.trim()) {
       return s;
     }
+
     const entry = DICTIONARY[s];
     if (!entry) {
       console.warn(`[I18N] ${s}`);
       return s;
     }
+
+    const currentLang = I18N.getLang();
+    if (currentLang === BASE_LANG) {
+      return s;
+    }
+
 
     const translation = entry[currentLang];
     if (!translation) {
