@@ -14,6 +14,7 @@
 000 seconds
 000 seconds ago
 000 weeks
+Clear Local Cache
 Code - Data
 Code - React App
 Copy App Link
