@@ -28,11 +28,11 @@ export default function ArticleViewMolecule({ article }) {
   const originalLangObj = LANG_IDX[originalLang];
   return (
     <Box>
-      <Link href={article.url} target="_blank" sx={{ textDecoration: "none" }}>
-        <Typography variant="h5" color={originalLangObj.color}>
-          <HighlightEnts text={title} ents={titleEnts} />
-        </Typography>
+      <Typography variant="h5" color={originalLangObj.color}>
+        <HighlightEnts text={title} ents={titleEnts} />
+      </Typography>
 
+      <Link href={article.url} target="_blank" sx={{ textDecoration: "none" }}>
         <AlignCenter>
           <Typography variant="caption" color="secondary">
             {article.urlShort}
