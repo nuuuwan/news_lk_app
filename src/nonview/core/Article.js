@@ -1,15 +1,19 @@
 import Cache from "../../nonview/base/Cache";
+import TimeX from "../../nonview/base/TimeX";
 import { JSONWWW } from "../../nonview/base/WWW";
 import { URL_DATA } from "../../nonview/constants/Data";
-import ArticleSummary from "../../nonview/core/ArticleSummary";
 
 const URL_ARTICLES = URL_DATA + "/articles";
 const MAX_WORDS_BODY_LINES_LIMITED = 100;
 const READING_SPEED_WPM = 200;
 
-export default class Article extends ArticleSummary {
+export default class Article {
   constructor(newspaperID, url, timeUT, originalLang, originalTitle, textIDX) {
-    super(newspaperID, url, timeUT, originalLang, originalTitle, null);
+    this.newspaperID = newspaperID;
+    this.url = url;
+    this.timeUT = timeUT;
+    this.originalLang = originalLang;
+    this.originalTitle = originalTitle;
     this.textIDX = textIDX;
   }
 
@@ -39,6 +43,24 @@ export default class Article extends ArticleSummary {
       d["origina_title"],
       text_idx
     );
+  }
+
+  get timeStrHumanized() {
+    return TimeX.getHumanTime(this.timeUT);
+  }
+
+  get timeStr() {
+    return TimeX.formatTime(this.timeUT);
+  }
+
+  get urlShort() {
+    return this.url
+      .split("/")
+      .splice(0, 3)
+      .join("/")
+      .replace("https://", "")
+      .replace("http://", "")
+      .replace("www.", "");
   }
 
   get bodyLinesLimited() {
