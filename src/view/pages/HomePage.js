@@ -61,14 +61,27 @@ export default class HomePage extends Component {
   }
 
   async refreshData() {
-    const articleSummaryList = await ArticleSummary.loadArticleSummaryList();
-    const entToGroup = await Ent.loadEntToGroup();
-    const groupToArticles = await Ent.loadGroupToArticles();
+    const {context} = this.state;
+    const {ent} = context;
+
+    let articleSummaryList;
+    if (ent === ENT_ALL) {
+      articleSummaryList = await ArticleSummary.loadArticleSummaryList();
+    } else {
+      const entToGroup = await Ent.loadEntToGroup();
+      const group = entToGroup[ent];
+      const groupToArticles = await Ent.loadGroupToArticles();
+      const fileNameList = groupToArticles[group];
+
+      articleSummaryList= fileNameList.map(
+        function(fileName) {
+          return ArticleSummary.fromDict({file_name: fileName});
+        }
+      );
+    }
 
     this.setState({
       articleSummaryList,
-      entToGroup,
-      groupToArticles,
     });
   }
 
