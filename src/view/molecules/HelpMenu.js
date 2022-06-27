@@ -6,6 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+import BugReportIcon from "@mui/icons-material/BugReport";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -29,6 +30,11 @@ const MENU_ITEM_LIST = [
     name: "Code Repository - Data",
     url: "https://github.com/nuuuwan/news_lk2/tree/data",
     Icon: GitHubIcon,
+  },
+  {
+    name: "Report Bugs",
+    url: "https://github.com/nuuuwan/news_lk_app/issues",
+    Icon: BugReportIcon,
   },
 ];
 
