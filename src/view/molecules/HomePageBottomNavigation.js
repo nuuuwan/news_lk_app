@@ -5,8 +5,8 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import URLContext from "../../nonview/base/URLContext"
-import {ENT_ALL} from "../../nonview/core/Ent"
+import URLContext from "../../nonview/base/URLContext";
+import { ENT_ALL } from "../../nonview/core/Ent";
 
 import I18N, { LANG_LIST } from "../../nonview/base/I18N";
 

@@ -55,7 +55,6 @@ const STYLE_REGULAR = {
 
 const STYLE_ENT_THING = {
   fontWeight: "bold",
-
 };
 
 const STYLE_ENT_NUMBER = {
@@ -65,7 +64,7 @@ const STYLE_ENT_NUMBER = {
 
 const STYLE_LINK = {
   textDecoration: "none",
-  color: "inherit",  
+  color: "inherit",
 };
 
 export default function HighlightEnts({ text, ents, entsEn }) {
@@ -100,7 +99,6 @@ export default function HighlightEnts({ text, ents, entsEn }) {
           {text}
         </span>
       );
-
     }
 
     const onClick = function () {
