@@ -23,7 +23,7 @@ export default class URLContext {
         return kvStr.split(DELIM_KV);
       })
       .reduce(function (context, [k, v]) {
-        context[k] = v;
+        context[k] = v.replaceAll('%20', ' ');
         return context;
       }, {});
   }
