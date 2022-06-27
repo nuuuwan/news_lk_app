@@ -1,10 +1,11 @@
 import { Component } from "react";
 
+import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
 
-import I18N from "../../nonview/base/I18N";
+import I18N, {t} from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
 import Ent, { ENT_ALL } from "../../nonview/core/Ent";
@@ -92,9 +93,20 @@ export default class HomePage extends Component {
   }
 
   render() {
-    const { articleSummaryList } = this.state;
+    const { articleSummaryList , context} = this.state;
     if (!articleSummaryList || articleSummaryList.length === 0) {
       return <CircularProgress />;
+    }
+    const {ent} = context;
+    let entText;
+    if (ent == ENT_ALL) {
+      entText = null;
+    } else {
+      entText = (
+        <Typography variant="body1" sx={{m: 0, p:0}}>
+          {t('Articles mentioning "000"', ent)}
+        </Typography>
+      )
     }
 
     const articleSummaryListToDisplay = articleSummaryList.slice(
@@ -105,6 +117,7 @@ export default class HomePage extends Component {
       <Box sx={STYLE}>
         <CustomAppBar />
         <Stack spacing={2}>
+          {entText}
           {articleSummaryListToDisplay.map(function (articleSummary) {
             const fileName = articleSummary.fileName;
             return (
