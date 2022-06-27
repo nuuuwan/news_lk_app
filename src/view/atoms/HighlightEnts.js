@@ -102,7 +102,7 @@ export default function HighlightEnts({ text, ents, entsEn }) {
 
     const onClick = function () {
       let context = URLContext.getContext();
-      context.ent = textEn.replaceAll("the ", "").trim();
+      context.ent = textEn.replaceAll("the ", "").replaceAll("The ", "").trim();
       URLContext.setContext(context);
       window.location.reload(true);
     };
