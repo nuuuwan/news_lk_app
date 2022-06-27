@@ -87,10 +87,6 @@ export default class HomePage extends Component {
     await this.refreshData();
   }
 
-  async onClickRefresh() {
-    window.location.reload(true);
-  }
-
   async onSelectLanguage(lang) {
     this.setContext({ lang });
   }
