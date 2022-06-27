@@ -11,6 +11,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SettingsIcon from "@mui/icons-material/Settings";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
@@ -20,6 +21,12 @@ const MENU_ITEM_LIST = [
     name: "Help (Twitter)",
     url: "https://twitter.com/nuuuwan/status/1539982615662383105",
     Icon: TwitterIcon,
+  },
+  {
+    name: "Trends (WordCloud)",
+    url:
+      "https://raw.githubusercontent.com/nuuuwan/news_lk2/data/wordcloud.png",
+    Icon: CloudQueueIcon,
   },
   {
     name: "Code Repository - App",
@@ -36,6 +43,7 @@ const MENU_ITEM_LIST = [
     url: "https://github.com/nuuuwan/news_lk_app/issues",
     Icon: BugReportIcon,
   },
+
 ];
 
 export default function HelpMenu() {
