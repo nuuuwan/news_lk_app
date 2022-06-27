@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
 
+import Ent from "../../nonview/core/Ent";
 import I18N from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
@@ -29,6 +30,8 @@ export default class HomePage extends Component {
     this.state = {
       context,
       articleSummaryList: null,
+      entToGroup: null,
+      groupToArticles: null,
     };
     this.isComponentMounted = false;
     this.setContext(context);
@@ -55,8 +58,13 @@ export default class HomePage extends Component {
 
   async refreshData() {
     const articleSummaryList = await ArticleSummary.loadArticleSummaryList();
+    const entToGroup = await Ent.loadEntToGroup();
+    const groupToArticles = await Ent.loadGroupToArticles();
+
     this.setState({
       articleSummaryList,
+      entToGroup,
+      groupToArticles,
     });
   }
 
