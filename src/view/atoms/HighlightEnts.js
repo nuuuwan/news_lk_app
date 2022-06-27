@@ -1,5 +1,6 @@
 import Link from "@mui/material/Link";
-import URLContext from "../../nonview/base/URLContext";
+
+const GOOGLE_SEARCH_PREFIX = "https://www.google.com/search?q=";
 
 function getAnnotatedPairs(text, ents) {
   let i = 0;
@@ -97,15 +98,10 @@ export default function HighlightEnts({ text, ents }) {
       style = STYLE_ENT_THING;
     }
 
-    const onClick = function() {
-      let context = URLContext.getContext();
-      context.ent = text;
-      URLContext.setContext(context);
-      window.location.reload(true);
-    }
+    const href = GOOGLE_SEARCH_PREFIX + encodeURIComponent(text);
 
     return (
-      <Link key={key} style={STYLE_LINK} onClick={onClick}>
+      <Link key={key} href={href} style={STYLE_LINK} target="_blank">
         <span style={style}>{text}</span>
       </Link>
     );
