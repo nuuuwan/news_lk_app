@@ -55,6 +55,7 @@ const STYLE_REGULAR = {
 
 const STYLE_ENT_THING = {
   fontWeight: "bold",
+
 };
 
 const STYLE_ENT_NUMBER = {
@@ -64,7 +65,7 @@ const STYLE_ENT_NUMBER = {
 
 const STYLE_LINK = {
   textDecoration: "none",
-  color: "inherit",
+  color: "inherit",  
 };
 
 export default function HighlightEnts({ text, ents, entsEn }) {
@@ -83,7 +84,6 @@ export default function HighlightEnts({ text, ents, entsEn }) {
       );
     }
 
-    let style;
     if (
       [
         "CARDINAL",
@@ -95,25 +95,12 @@ export default function HighlightEnts({ text, ents, entsEn }) {
         "TIME",
       ].includes(entLabel)
     ) {
-      style = STYLE_ENT_NUMBER;
-    } else if (
-      [
-        "EVENT",
-        "FAC",
-        "GPE",
-        "LAW",
-        "LOC",
-        "NORP",
-        "ORG",
-        "PERSON",
-        "PRODUCT",
-        "WORK_OF_ART",
-      ].includes(entLabel)
-    ) {
-      style = STYLE_ENT_THING;
-    } else {
-      console.debug(entLabel, text);
-      style = STYLE_ENT_THING;
+      return (
+        <span key={key} style={STYLE_ENT_NUMBER}>
+          {text}
+        </span>
+      );
+
     }
 
     const onClick = function () {
@@ -125,7 +112,7 @@ export default function HighlightEnts({ text, ents, entsEn }) {
 
     return (
       <Link key={key} style={STYLE_LINK} onClick={onClick}>
-        <span style={style}>{text}</span>
+        <span style={STYLE_ENT_THING}>{text}</span>
       </Link>
     );
   });
