@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
-import I18N, { t, LANG_IDX } from "../../nonview/base/I18N";
+import I18N, { t, LANG_IDX, BASE_LANG } from "../../nonview/base/I18N";
 
 import AlignCenter from "../../view/atoms/AlignCenter";
 import Condition from "../../view/atoms/Condition";
@@ -20,8 +20,13 @@ export default function ArticleViewMolecule({ article }) {
   const bodyLines = text.bodyLines;
   const author = text.author;
 
+  const textEn = article.textIDX[BASE_LANG];
+
   const titleEnts = text.titleEnts;
   const bodyLineEntsList = text.bodyLineEntsList;
+
+  const titleEntsEn = textEn.titleEnts;
+  const bodyLineEntsListEn = textEn.bodyLineEntsList;
 
   const isInOriginalLang = originalLang === currentLang;
 
@@ -29,7 +34,7 @@ export default function ArticleViewMolecule({ article }) {
   return (
     <Box>
       <Typography variant="h5" color={originalLangObj.color}>
-        <HighlightEnts text={title} ents={titleEnts} />
+        <HighlightEnts text={title} ents={titleEnts} entsEn={titleEntsEn} />
       </Typography>
 
       <Link href={article.url} target="_blank" sx={{ textDecoration: "none" }}>
@@ -65,6 +70,7 @@ export default function ArticleViewMolecule({ article }) {
       <LimitWords
         lines={bodyLines}
         entsList={bodyLineEntsList}
+        entsListEn={bodyLineEntsListEn}
         wordLimit={50}
       />
 

@@ -4,15 +4,14 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
 
-import Ent, {ENT_ALL} from "../../nonview/core/Ent";
 import I18N from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
+import Ent, { ENT_ALL } from "../../nonview/core/Ent";
 
 import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
-
 
 const STYLE = {
   width: 400,
@@ -61,8 +60,8 @@ export default class HomePage extends Component {
   }
 
   async refreshData() {
-    const {context} = this.state;
-    const {ent} = context;
+    const { context } = this.state;
+    const { ent } = context;
 
     let articleSummaryList;
     if (ent === ENT_ALL) {
@@ -73,11 +72,9 @@ export default class HomePage extends Component {
       const groupToArticles = await Ent.loadGroupToArticles();
       const fileNameList = groupToArticles[group];
 
-      articleSummaryList= fileNameList.map(
-        function(fileName) {
-          return ArticleSummary.fromDict({file_name: fileName});
-        }
-      );
+      articleSummaryList = fileNameList.map(function (fileName) {
+        return ArticleSummary.fromDict({ file_name: fileName });
+      });
     }
 
     this.setState({

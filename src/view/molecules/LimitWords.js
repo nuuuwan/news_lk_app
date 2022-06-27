@@ -12,7 +12,7 @@ import AlignRight from "../../view/atoms/AlignRight";
 import Condition from "../../view/atoms/Condition";
 import MultiLines from "../../view/molecules/MultiLines";
 
-export default function LimitWords({ lines, entsList, wordLimit }) {
+export default function LimitWords({ lines, entsList, entsListEn, wordLimit }) {
   if (!lines) {
     lines = [];
   }
@@ -39,10 +39,16 @@ export default function LimitWords({ lines, entsList, wordLimit }) {
     setShow(false);
   };
 
-  let mandatoryEntsList, optionalEntsList;
+  let mandatoryEntsList,
+    optionalEntsList,
+    mandatoryEntsListEn,
+    optionalEntsListEn;
   if (entsList) {
     mandatoryEntsList = entsList.slice(0, mandatoryLines.length);
     optionalEntsList = entsList.slice(mandatoryLines.length);
+
+    mandatoryEntsListEn = entsListEn.slice(0, mandatoryLines.length);
+    optionalEntsListEn = entsListEn.slice(mandatoryLines.length);
   }
 
   return (
@@ -50,6 +56,7 @@ export default function LimitWords({ lines, entsList, wordLimit }) {
       <MultiLines
         lines={mandatoryLines}
         entsList={mandatoryEntsList}
+        entsListEn={mandatoryEntsListEn}
         color="black"
       />
       <Condition condition={!show && optionalLines.length > 0}>
@@ -65,6 +72,7 @@ export default function LimitWords({ lines, entsList, wordLimit }) {
         <MultiLines
           lines={optionalLines}
           entsList={optionalEntsList}
+          entsListEn={optionalEntsListEn}
           color="gray"
         />
         <AlignRight>

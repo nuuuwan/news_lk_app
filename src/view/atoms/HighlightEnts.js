@@ -1,29 +1,48 @@
 import Link from "@mui/material/Link";
+
 import URLContext from "../../nonview/base/URLContext";
 
-function getAnnotatedPairs(text, ents) {
+function getAnnotatedPairs(text, ents, entsEn) {
   let i = 0;
   let parts = [];
   while (i < text.length) {
     let minJ = undefined;
-    let minEnt = undefined;
-    for (let ent of ents) {
+    let minIEnt = undefined;
+
+    for (let iEnt in ents) {
+      const ent = ents[iEnt];
       const needle = ent.text;
       const j = text.indexOf(needle, i);
       if (j !== -1) {
         if (minJ === undefined || j < minJ) {
           minJ = j;
-          minEnt = ent;
+          minIEnt = iEnt;
         }
       }
     }
 
     if (minJ !== undefined) {
-      parts.push([text.substring(i, minJ), false]);
-      parts.push([minEnt.text, minEnt.label]);
+      parts.push({
+        text: text.substring(i, minJ),
+        textEn: null,
+        entLabel: false,
+      });
+      const minEnt = ents[minIEnt];
+      const minEntEn = entsEn[minIEnt];
+
+      parts.push({
+        text: minEnt.text,
+        textEn: minEntEn.text,
+        entLabel: minEnt.label,
+      });
+
       i = minJ + minEnt.text.length;
     } else {
-      parts.push([text.substring(i), false]);
+      parts.push({
+        text: text.substring(i, minJ),
+        textEn: null,
+        entLabel: false,
+      });
       break;
     }
   }
@@ -48,13 +67,13 @@ const STYLE_LINK = {
   color: "inherit",
 };
 
-export default function HighlightEnts({ text, ents }) {
+export default function HighlightEnts({ text, ents, entsEn }) {
   if (!ents) {
     return text;
   }
 
-  const annotatedPairs = getAnnotatedPairs(text, ents);
-  return annotatedPairs.map(function ([text, entLabel], iItem) {
+  const annotatedPairs = getAnnotatedPairs(text, ents, entsEn);
+  return annotatedPairs.map(function ({ text, textEn, entLabel }, iItem) {
     const key = "item-" + iItem + text;
     if (entLabel === false) {
       return (
@@ -97,12 +116,12 @@ export default function HighlightEnts({ text, ents }) {
       style = STYLE_ENT_THING;
     }
 
-    const onClick = function() {
+    const onClick = function () {
       let context = URLContext.getContext();
-      context.ent = text.replaceAll('the ', '').trim();
+      context.ent = textEn.replaceAll("the ", "").trim();
       URLContext.setContext(context);
       window.location.reload(true);
-    }
+    };
 
     return (
       <Link key={key} style={STYLE_LINK} onClick={onClick}>
