@@ -50,7 +50,7 @@ function getAnnotatedPairs(text, ents, entsEn) {
 }
 
 const STYLE_REGULAR = {
-  opacity: 0.6,
+  opacity: 0.5,
 };
 
 const STYLE_ENT_THING = {
@@ -58,7 +58,6 @@ const STYLE_ENT_THING = {
 };
 
 const STYLE_ENT_NUMBER = {
-  fontWeight: "bold",
   opacity: 0.8,
 };
 
