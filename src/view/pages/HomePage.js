@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
 
-import Ent from "../../nonview/core/Ent";
+import Ent, {ENT_ALL} from "../../nonview/core/Ent";
 import I18N from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
@@ -12,6 +12,7 @@ import ArticleSummary from "../../nonview/core/ArticleSummary";
 import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
+
 
 const STYLE = {
   width: 400,
@@ -41,6 +42,9 @@ export default class HomePage extends Component {
     let context = URLContext.getContext();
     if (!context.lang) {
       context.lang = I18N.getLang();
+    }
+    if (!context.ent) {
+      context.ent = ENT_ALL;
     }
     return context;
   }
