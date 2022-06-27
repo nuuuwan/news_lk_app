@@ -7,11 +7,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import BugReportIcon from "@mui/icons-material/BugReport";
+import CloudQueueIcon from "@mui/icons-material/CloudQueue";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SettingsIcon from "@mui/icons-material/Settings";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 
 import { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
@@ -24,8 +24,7 @@ const MENU_ITEM_LIST = [
   },
   {
     name: "Trends (WordCloud)",
-    url:
-      "https://raw.githubusercontent.com/nuuuwan/news_lk2/data/wordcloud.png",
+    url: "https://raw.githubusercontent.com/nuuuwan/news_lk2/data/wordcloud.png",
     Icon: CloudQueueIcon,
   },
   {
@@ -43,7 +42,6 @@ const MENU_ITEM_LIST = [
     url: "https://github.com/nuuuwan/news_lk_app/issues",
     Icon: BugReportIcon,
   },
-
 ];
 
 export default function HelpMenu() {
