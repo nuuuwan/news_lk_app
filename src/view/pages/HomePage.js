@@ -20,7 +20,7 @@ const STYLE = {
   marginBottom: 5,
 };
 
-const MAX_ARTICLES_TO_DISPLAY = 400;
+const MAX_ARTICLES_TO_DISPLAY = 48;
 
 export default class HomePage extends Component {
   constructor(props) {
