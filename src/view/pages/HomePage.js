@@ -99,7 +99,7 @@ export default class HomePage extends Component {
     }
     const { ent } = context;
     let entText;
-    if (ent == ENT_ALL) {
+    if (ent === ENT_ALL) {
       entText = null;
     } else {
       entText = (
