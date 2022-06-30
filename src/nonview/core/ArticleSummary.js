@@ -4,6 +4,8 @@ import Ent from "../../nonview/core/Ent";
 
 const URL_RAW_ARTICLES = URL_DATA + "/articles.summary.latest.json";
 const FILE_NAME_PREFIX = "/tmp/news_lk2/articles/";
+const URL_GROUP_TO_ARTICLE_SUMMARY =
+  URL_DATA + "/group_to_article_summary.json";
 
 export default class ArticleSummary {
   constructor(fileName) {
@@ -22,13 +24,28 @@ export default class ArticleSummary {
     });
   }
 
+  static async loadGroupToArticleSummaryList() {
+    const jsonWWW = new JSONWWW(URL_GROUP_TO_ARTICLE_SUMMARY);
+    const groupToRawArticleSummaryList = await jsonWWW.read();
+    return Object.entries(groupToRawArticleSummaryList).reduce(function (
+      groupToArticleSummaryList,
+      [group, rawArticleSummaryList]
+    ) {
+      groupToArticleSummaryList[group] = rawArticleSummaryList.map(function (
+        d
+      ) {
+        return ArticleSummary.fromDict(d);
+      });
+      return groupToArticleSummaryList;
+    },
+    {});
+  }
+
   static async loadArticleSummaryListForEnt(ent) {
     const entToGroup = await Ent.loadEntToGroup();
     const group = entToGroup[ent];
-    const groupToArticles = await Ent.loadGroupToArticles();
-    const fileNameList = groupToArticles[group];
-    return fileNameList.map(function (fileName) {
-      return ArticleSummary.fromDict({ file_name: fileName });
-    });
+    const groupToArticleSummaryList =
+      await ArticleSummary.loadGroupToArticleSummaryList();
+    return groupToArticleSummaryList[group];
   }
 }
