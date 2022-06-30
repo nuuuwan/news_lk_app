@@ -4,9 +4,10 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AlignRight from "../../view/atoms/AlignRight";
 
 import { t } from "../../nonview/base/I18N";
+
+import AlignRight from "../../view/atoms/AlignRight";
 
 export default function ProgressiveList({
   list,
