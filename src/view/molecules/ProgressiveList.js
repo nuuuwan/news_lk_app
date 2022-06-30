@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { t } from "../../nonview/base/I18N";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import { t } from "../../nonview/base/I18N";
 
 export default function ProgressiveList({
   list,
