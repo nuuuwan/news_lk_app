@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AlignRight from "../../view/atoms/AlignRight";
 
 import { t } from "../../nonview/base/I18N";
 
@@ -23,10 +24,12 @@ export default function ProgressiveList({
       {list.slice(0, nDisplay).map(function (listItem, iListItem) {
         return renderListItem(listItem, iListItem);
       })}
-      <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
-        <ExpandMoreIcon />
-        <Typography variant="caption">{t("Read more articles")}</Typography>
-      </IconButton>
+      <AlignRight>
+        <IconButton onClick={onClickShowMore} sx={{ color: "lightgray" }}>
+          <ExpandMoreIcon />
+          <Typography variant="caption">{t("Read more articles")}</Typography>
+        </IconButton>
+      </AlignRight>
     </Box>
   );
 }
