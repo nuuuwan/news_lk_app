@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import I18N, { t } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import ArticleSummary from "../../nonview/core/ArticleSummary";
-import Ent, { ENT_ALL } from "../../nonview/core/Ent";
+import { ENT_ALL } from "../../nonview/core/Ent";
 
 import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
@@ -70,14 +70,9 @@ export default class HomePage extends Component {
     if (ent === ENT_ALL) {
       articleSummaryList = await ArticleSummary.loadArticleSummaryList();
     } else {
-      const entToGroup = await Ent.loadEntToGroup();
-      const group = entToGroup[ent];
-      const groupToArticles = await Ent.loadGroupToArticles();
-      const fileNameList = groupToArticles[group];
-
-      articleSummaryList = fileNameList.map(function (fileName) {
-        return ArticleSummary.fromDict({ file_name: fileName });
-      });
+      articleSummaryList = await ArticleSummary.loadArticleSummaryListForEnt(
+        ent
+      );
     }
 
     this.setState({
