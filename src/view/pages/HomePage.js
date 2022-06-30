@@ -13,18 +13,18 @@ import Ent, { ENT_ALL } from "../../nonview/core/Ent";
 
 import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
-import ArticleView from "../../view/organisms/ArticleView";
 import ProgressiveList from "../../view/molecules/ProgressiveList";
+import ArticleView from "../../view/organisms/ArticleView";
 
 const STYLE = {
   width: 400,
   maxWidth: "90%",
   margin: "auto",
   marginTop: 5,
-  marginBottom: 5,
+  marginBottom: 10,
 };
 
-const MAX_ARTICLES_TO_DISPLAY = 4;
+const N_ARTICLE_INCR = 10;
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -123,7 +123,7 @@ export default class HomePage extends Component {
           {entText}
           <ProgressiveList
             list={articleSummaryList}
-            nItemIncrement={MAX_ARTICLES_TO_DISPLAY}
+            nItemIncrement={N_ARTICLE_INCR}
             renderListItem={(articleSummary) => {
               const fileName = articleSummary.fileName;
               return (
