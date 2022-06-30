@@ -1,5 +1,6 @@
 import { Component } from "react";
 
+import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
@@ -13,6 +14,7 @@ import Ent, { ENT_ALL } from "../../nonview/core/Ent";
 import CustomAppBar from "../../view/molecules/CustomAppBar";
 import HomePageBottomNavigation from "../../view/molecules/HomePageBottomNavigation";
 import ArticleView from "../../view/organisms/ArticleView";
+import ProgressiveList from "../../view/molecules/ProgressiveList";
 
 const STYLE = {
   width: 400,
@@ -22,7 +24,7 @@ const STYLE = {
   marginBottom: 5,
 };
 
-const MAX_ARTICLES_TO_DISPLAY = 48;
+const MAX_ARTICLES_TO_DISPLAY = 4;
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -94,9 +96,14 @@ export default class HomePage extends Component {
 
   render() {
     const { articleSummaryList, context } = this.state;
-    if (!articleSummaryList || articleSummaryList.length === 0) {
+    if (!articleSummaryList) {
       return <CircularProgress />;
     }
+
+    if (articleSummaryList.length === 0) {
+      return <Alert severity="warning">No Articles</Alert>;
+    }
+
     const { ent } = context;
     let entText;
     if (ent === ENT_ALL) {
@@ -109,24 +116,24 @@ export default class HomePage extends Component {
       );
     }
 
-    const articleSummaryListToDisplay = articleSummaryList.slice(
-      0,
-      MAX_ARTICLES_TO_DISPLAY
-    );
     return (
       <Box sx={STYLE}>
         <CustomAppBar />
         <Stack spacing={2}>
           {entText}
-          {articleSummaryListToDisplay.map(function (articleSummary) {
-            const fileName = articleSummary.fileName;
-            return (
-              <ArticleView
-                key={"article-" + fileName}
-                articleSummary={articleSummary}
-              />
-            );
-          })}
+          <ProgressiveList
+            list={articleSummaryList}
+            nItemIncrement={MAX_ARTICLES_TO_DISPLAY}
+            renderListItem={(articleSummary) => {
+              const fileName = articleSummary.fileName;
+              return (
+                <ArticleView
+                  key={"article-" + fileName}
+                  articleSummary={articleSummary}
+                />
+              );
+            }}
+          />
         </Stack>
         <HomePageBottomNavigation
           onSelectLanguage={this.onSelectLanguage.bind(this)}
