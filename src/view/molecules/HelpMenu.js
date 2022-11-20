@@ -24,7 +24,7 @@ const MENU_ITEM_LIST = [
   },
   {
     name: "Trends (WordCloud)",
-    url: "https://raw.githubusercontent.com/nuuuwan/news_lk2/data/wordcloud.png",
+    url: "https://raw.githubusercontent.com/nuuuwan/news_lk3_data/main/wordcloud.png",
     Icon: CloudQueueIcon,
   },
   {
@@ -34,7 +34,7 @@ const MENU_ITEM_LIST = [
   },
   {
     name: "Code Repository - Data",
-    url: "https://github.com/nuuuwan/news_lk2/tree/data",
+    url: "https://github.com/nuuuwan/news_lk3_data/tree/main",
     Icon: GitHubIcon,
   },
   {

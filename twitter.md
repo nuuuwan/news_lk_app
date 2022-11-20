@@ -67,7 +67,7 @@ between publishing and turning up on #NewsAppLK)
 http://github.com/nuuuwan/news_lk_app
 
 The data and scraping logic is at
-https://github.com/nuuuwan/news_lk2/tree/data
+https://github.com/nuuuwan/news_lk3_data
 
 Feel free to fork, comment, & report issues.
 

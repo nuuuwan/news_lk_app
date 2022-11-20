@@ -3,7 +3,7 @@ import { URL_DATA } from "../../nonview/constants/Data";
 import Ent from "../../nonview/core/Ent";
 
 const URL_RAW_ARTICLES = URL_DATA + "/articles.summary.latest.json";
-const FILE_NAME_PREFIX = "/tmp/news_lk2/articles/";
+const FILE_NAME_PREFIX = "/tmp/news_lk3_data/articles/";
 const URL_GROUP_TO_ARTICLE_SUMMARY =
   URL_DATA + "/group_to_article_summary.json";
 
