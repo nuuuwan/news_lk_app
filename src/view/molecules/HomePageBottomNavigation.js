@@ -10,6 +10,11 @@ import I18N, { LANG_LIST } from "../../nonview/base/I18N";
 import URLContext from "../../nonview/base/URLContext";
 import { ENT_ALL } from "../../nonview/core/Ent";
 
+const STYLE_PAPER = { position: "fixed", bottom: 0, left: 0, right: 0}
+
+const STYLE= { background: "black" }
+const STYLE_ACTION = {color: "white"}
+
 export default function HomePageBottomNavigation({
   timeLatestRefresh,
   onSelectLanguage,
@@ -23,10 +28,10 @@ export default function HomePageBottomNavigation({
 
   return (
     <Paper
-      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      sx={STYLE_PAPER}
       elevation={3}
     >
-      <BottomNavigation showLabels>
+      <BottomNavigation showLabels sx={STYLE}>
         {LANG_LIST.map(function (lang) {
           const onClickInner = function () {
             onSelectLanguage(lang.lang);
@@ -42,12 +47,14 @@ export default function HomePageBottomNavigation({
                 </Typography>
               }
               onClick={onClickInner}
+              sx={STYLE_ACTION}
             />
           );
         })}
         <BottomNavigationAction
           icon={<RefreshIcon />}
           onClick={onClickRefresh}
+          sx={STYLE_ACTION}
         />
       </BottomNavigation>
     </Paper>
