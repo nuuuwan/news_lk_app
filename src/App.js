@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import HomePage from "./view/pages/HomePage.js";
 
+const FONT_FAMILY = "Zen Kaku Gothic New";
 const THEME = createTheme({
   palette: {
     primary: {
@@ -14,7 +15,7 @@ const THEME = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Cambay", "Cabin", "sans-serif"].join(","),
+    fontFamily: [FONT_FAMILY, "sans-serif"].join(","),
     fontSize: 13,
   },
 });
